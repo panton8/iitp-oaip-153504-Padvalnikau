@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    float X,Y;
+    double X,Y;
     cin >> X >> Y;
     bool a = X > Y;
     a ? cout << X : cout << Y;
