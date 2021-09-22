@@ -11,8 +11,8 @@ int main()
 {
     double X,Y;
     cin >> X >> Y;
-    bool a = X > Y;
-    a ? cout << X : cout << Y;
+    bool max = X > Y;
+    max ? cout << X : cout << Y;
     return 0;
 }
 
