@@ -10,17 +10,9 @@ using namespace std;
 int main()
 {
     float X,Y;
-    bool a = true;
-    bool b = false;
     cin >> X >> Y;
-    if (X > Y)
-    {
-        cout << a;
-    }
-    else
-    {
-        cout << b;
-    }
+    bool a = X > Y;
+    a ? cout << X : cout << Y;
     return 0;
 }
 
