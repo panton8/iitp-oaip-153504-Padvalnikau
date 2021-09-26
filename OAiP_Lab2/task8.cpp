@@ -12,6 +12,7 @@ using namespace std;
 int main(){
     int funstion;
     double z,a,c,x;
+    cout << "Choose num of function: 1)2x; 2)x^3; 3)x/3.";
     cin >> funstion >> a >> z >> c;
     if (z <= 1)
     {
