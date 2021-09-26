@@ -12,7 +12,7 @@ int main()
     double X,Y;
     cin >> X >> Y;
     bool max = X > Y;
-    max ? cout << X : cout << Y;
+    max ? cout << "Max num = "<< X : cout<<"Max num = " << Y;
     return 0;
 }
 
