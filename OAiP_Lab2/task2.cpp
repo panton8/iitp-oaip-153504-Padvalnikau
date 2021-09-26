@@ -15,32 +15,32 @@ int main() {
     if (X > Y)
     {
         Y = 0;
-        cout << X << " " << Y << endl;
+        cout << "X = " << X << endl << "Y = " << Y << endl;
     }
     if (X < Y)
     {
         X = 0;
-        cout << X << " " << Y << endl;
+        cout << "X = " << X << endl << "Y = " << Y << endl;
     }
     if (X == Y)
     {
         (X = Y = 0);
-        cout << X << " " << Y << endl;
+        cout << "X = " << X << endl << "Y = " << Y << endl;
     }
     if (A > B && A > C)
     {
         A = A - K;
-        cout << A;
+        cout << "A(The biggest num) - K = "<< A;
     }
     else if  (B > A && B > C)
     {
         B = B - K;
-        cout << B;
+        cout << "B(The biggest num) - K = " << B;
     }
     else if (C > A && C > B)
     {
         C = C - K;
-        cout << C;
+        cout << "C(The biggest num) - K = " << C;
     }
     return 0;
 }
