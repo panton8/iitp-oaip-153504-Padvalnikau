@@ -7,13 +7,31 @@
 поглощают друг друга, то вывести сообщение “Фигуры пересекаются”. Иначе
 вывести сообщение “Ни одно условие не выполнено”.*/
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
-    double x1,y1,x2,y2,r,R;
-    cin >> x1 >> y1 >> x2 >> y2 >> r >> R;
-
+    double x1, y1, x2, y2, r, R;
+    cin >> x1 >> y1 >> r >> x2 >> y2>> R;
+    double S1 = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    if (S1 < R - r)
+    {
+      cout << "Yes";
+    }
+    else if  (S1 <= r - R)
+    {
+        cout << " Yes, but the opposite is true for two figures";
+    }
+    else if ((S1 > fabs(r - R)) && (S1 < (r + R)))
+    {
+        cout << "Intersection of figures";
+    }
+    else
+    {
+        cout << "None of the conditions are completed";
+    }
+    return 0;
 }
 
