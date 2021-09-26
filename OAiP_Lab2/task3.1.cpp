@@ -9,9 +9,9 @@ using namespace std;
 
 int main()
 {
-    float X,Y;
+    double X,Y;
     cin >> X >> Y;
-    X > Y ? cout << X : cout << Y;
+    X > Y ? cout << "Max num = " << X : cout << "Max num = "<< Y;
     return 0;
 }
 
