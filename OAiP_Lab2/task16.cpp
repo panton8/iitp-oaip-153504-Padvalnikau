@@ -1,16 +1,24 @@
 //Лабораторная 2, задача 16. Выполнена: Подвальников А.С.
 /*Введены два числа. Выведите их НОД и НОК*/
-#include<iostream>
-#include <cmath>
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
-    double A,B;
-    cin >> A >> B;
-
+    int a, b;
+    cin >> a >> b;
+    while (a > 0 && b > 0)
+    {
+        if (a > b)
+        {
+            a %= b;
+        }
+        else
+        {
+            b %= a;
+        }
+    }
+    cout << a + b;
     return 0;
 }
-
-
