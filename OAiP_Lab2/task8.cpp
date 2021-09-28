@@ -9,20 +9,21 @@
 #define e 2.71
 using namespace std;
 
-int main(){
+int main()
+{
     int funstion;
     double z,a,c,x;
-    cout << "Choose num of function: 1)2x; 2)x^3; 3)x/3.";
+    cout << "Choose num of function: 1)2x; 2)x^3; 3)x/3." << endl;
     cin >> funstion >> a >> z >> c;
     if (z <= 1)
     {
         x = pow(z,2) + 1;
     }
-    else if (z > 1)
+    else
     {
         x = 1 / (sqrt(z-1));
     }
-    switch(funstion)
+    switch (funstion)
     {
         case 1:
             cout << (a * log(fabs(x))) + pow(e,x) + (c * pow(sin((2*x) * pow(x,2) - 1),3)) ;

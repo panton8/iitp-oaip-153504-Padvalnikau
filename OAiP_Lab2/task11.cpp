@@ -17,6 +17,10 @@ int main()
     {
         cout << "Area of square is more than area of circle";
     }
+    else if(S_square == S_circle)
+    {
+        cout << "Area of figures are equal";
+    }
     else
     {
         cout << "Area of circle is more than area of square";

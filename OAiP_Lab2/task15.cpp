@@ -12,9 +12,9 @@ int main()
     cin >> K;
     if (K < 0)
     {
-        cout << "ERROR!";
+        cout << "ERROR! Number of mushrooms can't be negative";
     }
-    else if(((int(K) % 10 == 2) || (int(K) % 10 == 3) || (int(K) % 10 == 4 )) || (K != round(K)))
+    else if(((int(K) != 12 && int(K) != 13 && int (K) != 14 ) && ((int(K) % 10 == 2) || (int(K) % 10 == 3) || (int(K) % 10 == 4 ))))
     {
         cout << "Mi nashli" << " " << K << " " << "griba v lesy";
     }

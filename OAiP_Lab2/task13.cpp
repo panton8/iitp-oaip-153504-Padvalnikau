@@ -13,9 +13,9 @@ int main()
     cin >> R >> P >> Q;
     r =(P*sin(Q/180*Pi)/2);
     if (r >= R)
-        {
+    {
         cout << "The ball will pass";
-        }
+    }
     else
     {
         cout << "The ball wan't pass ";
