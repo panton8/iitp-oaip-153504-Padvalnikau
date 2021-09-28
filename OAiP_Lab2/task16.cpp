@@ -6,19 +6,19 @@ using namespace std;
 
 int main()
 {
-    int a, b;
-    cin >> a >> b;
-    while (a > 0 && b > 0)
+    int num1,num2,a,b,temp,GCD,LCM;
+    cin >> num1 >> num2;
+    a = num1;
+    b = num2;
+    while (b != 0)
     {
-        if (a > b)
-        {
-            a %= b;
-        }
-        else
-        {
-            b %= a;
-        }
+        temp = b;
+        b = a % b;
+        a = temp;
     }
-    cout << a + b;
+    GCD = a;
+    LCM = (num1 * num2)/ GCD;
+    cout << "Greatest Common Factor Of " << num1 << " And " << num2 << ": " << GCD << endl;
+    cout << "Least Common Multiple Of " << num1 << " And " << num2 << ": " << LCM << endl;
     return 0;
 }
