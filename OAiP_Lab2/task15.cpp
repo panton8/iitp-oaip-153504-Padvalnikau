@@ -14,7 +14,7 @@ int main()
     {
         cout << "ERROR! Number of mushrooms can't be negative";
     }
-    else if(((int(K) % 100 != 12 && int(K) % 100 != 13 && int (K) % 100 != 14 ) && ((int(K) % 10 == 2) || (int(K) % 10 == 3) || (int(K) % 10 == 4 )))||(K != round(K)))
+    else if(((int(K) % 100 != 12 && int(K) % 100 != 13 && int (K) % 100 != 14 ) && ((int(K) % 10 == 2) || (int(K) % 10 == 3) || (int(K) % 10 == 4 )))||(K != round(K) || K !=floor(K)))
     {
         cout << "Mi nashli" << " " << K << " " << "griba v lesy";
     }
