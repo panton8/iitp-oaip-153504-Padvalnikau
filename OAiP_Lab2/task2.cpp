@@ -11,6 +11,7 @@ using namespace std;
 int main() {
     int X, Y;
     double A,B,C,K;
+    cout << "Enter parameters(6) :" << endl;
     cin >> X >> Y >> A >> B >> C >> K;
     if (X > Y)
     {
@@ -41,6 +42,10 @@ int main() {
     {
         C = C - K;
         cout << "C(The biggest num) - K = " << C;
+    }
+    else
+    {
+        cout << "Something wrong!Maybe A = B = C";
     }
     return 0;
 }

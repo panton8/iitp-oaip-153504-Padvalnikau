@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     double a,b,c,x,y;
+    cout << "Enter brick parameters(3) and others(2) parameters:"  << endl;
     cin >> a >> b >> c >> x >> y;
     if (c <= y && b <= x)
     {

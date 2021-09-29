@@ -14,6 +14,7 @@ using namespace std;
 int main()
 {
     double x1, y1, x2, y2, r, R;
+    cout << "Enter all(6) parameters:" << endl;
     cin >> x1 >> y1 >> r >> x2 >> y2>> R;
     double S1 = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
     if (S1 < R - r)

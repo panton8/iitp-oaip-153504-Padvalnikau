@@ -9,6 +9,7 @@ using namespace std;
 int main()
 {
     double K;
+    cout << "Enter the amount of mushrooms you found:" << endl;
     cin >> K;
     if (K < 0)
     {

@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     double a,b,c,d,Z;
+    cout << "Enter a,b,c,d :" << endl;
     cin >> a >> b >> c >> d;
     if (c >= d && a<d)
     {

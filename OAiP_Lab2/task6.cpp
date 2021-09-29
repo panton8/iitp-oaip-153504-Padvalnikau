@@ -9,8 +9,8 @@ int main()
 {
     double a,b,c,Y;
     int N;
+    cout << "Enter a,b,c,N :" << endl;
     cin >> a >> b >> c >> N;
-
     switch(N) {
         case 2:
             Y = b * c - pow(a, 2);

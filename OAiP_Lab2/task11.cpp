@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     double a, r;
+    cout << "Enter a and r :" << endl;
     cin >> a >> r;
     double S_square = a*a;
     double S_circle = Pi*r*r;

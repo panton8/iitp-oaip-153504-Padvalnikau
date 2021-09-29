@@ -12,6 +12,7 @@ using namespace std;
 int main()
 {
     double a,b,c,p,q;
+    cout << "Enter the values of all(5) variables :" << endl;
     cin >> a >> b >> c >> p >> q;
 
     //First:
@@ -122,7 +123,11 @@ int main()
     if (D3 > 0)
     {
         double A =  double (pow((-q/2) + sqrt(D3),(1.0/3)));
-        double B =  double (pow((-q/2) - sqrt(D3),(1.0/3)));
+        double b =(-q/2) - sqrt(D3);
+        double b1 = fabs((-q/2) - sqrt(D3));
+        double b2 = pow(b1,1.0/3);
+        double B;
+        b < 0 ? B = -b2 : B = b2;
         double k1 = A + B;
         cout << "Solution for x^3 + px + q = 0 :" << endl;
         cout << "x1 = " << k1 << endl;
@@ -142,6 +147,5 @@ int main()
         cout << "Solution for x^3 + px + q = 0 :" << endl;
         cout << "x1 = " << k5 << endl << "x2 = x3 = " << k6 << endl;
     }
-
     return 0;
 }

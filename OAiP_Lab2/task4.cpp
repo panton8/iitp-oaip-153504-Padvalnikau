@@ -13,6 +13,7 @@ int main()
 {
     int k;
     double x,y;
+    cout << "Enter k,x,y :" << endl;
     cin >> k >> x >> y;
     if (k > 0)
     {

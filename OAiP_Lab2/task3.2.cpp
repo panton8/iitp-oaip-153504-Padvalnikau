@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     double X,Y;
+    cout << "Enter X and Y :" << endl;
     cin >> X >> Y;
     bool max = X > Y;
     max ? cout << "Max num = "<< X : cout<<"Max num = " << Y;

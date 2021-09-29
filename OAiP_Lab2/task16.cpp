@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     int num1,num2,a,b,temp,GCD,LCM;
+    cout << "Enter numbers to find GCD and LCM:" << endl;
     cin >> num1 >> num2;
     a = num1;
     b = num2;

@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     float x,y,z;
+    cout << "Enter values x,y,z:" << endl;
     cin >> x >> y >> z;
     if (x < y+z && y < x+z && z < x+y)
     {

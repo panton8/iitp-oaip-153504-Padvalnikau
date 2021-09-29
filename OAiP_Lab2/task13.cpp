@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     double R,P,Q,r;
+    cout << "Enter R,P,Q" << endl;
     cin >> R >> P >> Q;
     r =(P*sin(Q/180*Pi)/2);
     if (r >= R)

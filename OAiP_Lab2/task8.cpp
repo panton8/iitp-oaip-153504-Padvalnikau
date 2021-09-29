@@ -11,27 +11,34 @@ using namespace std;
 
 int main()
 {
-    int funstion;
+    int function;
     double z,a,c,x;
     cout << "Choose num of function: 1)2x; 2)x^3; 3)x/3." << endl;
-    cin >> funstion >> a >> z >> c;
+    cin >> function;
+    cout << "Enter a,z,c" << endl;
+    cin >> a >> z >> c;
     if (z <= 1)
     {
         x = pow(z,2) + 1;
+        cout << "calculate at x = z^2 + 1" << endl;
     }
     else
     {
         x = 1 / (sqrt(z-1));
+        cout << "calculate at x = 1 / sqrt(z-1)" << endl;
     }
-    switch (funstion)
+    switch (function)
     {
         case 1:
+            cout << "Calculation is performed using the function f(x)=2x" << endl;
             cout << (a * log(fabs(x))) + pow(e,x) + (c * pow(sin((2*x) * pow(x,2) - 1),3)) ;
             break;
         case 2:
+            cout << "Calculation is performed using the function f(x)=x^3" << endl;
             cout << (a * log(fabs(x))) + pow(e,x) + (c * pow(sin((pow(x,3)) * pow(x,2) - 1),3));
             break;
         case 3:
+            cout << "Calculation is performed using the function f(x)=x/3" << endl;
             cout << (a * log(fabs(x)))+ pow(e,x) + (c * pow(sin((x/3) * pow(x,2) - 1),3));
     }
     return  0;
