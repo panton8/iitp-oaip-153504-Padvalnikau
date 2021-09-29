@@ -18,8 +18,64 @@ using namespace  std;
 
 int main()
 {
-    double W,H,x1,y1,x2,y2,w,h,D;
+    double W,H,x1,y1,x2,y2,w,h;
+    cout << "Input parameters:";
     cin >> W >> H >> x1 >> y1 >> x2 >> y2 >> w >> h;
-
+    double d_H1 = y1;
+    double d_H2 = H - y2;
+    double d_W1 = x1;
+    double d_W2 = W - x2;
+    double min = 108;
+    if (((w <= d_W1) || (h <= d_H1)) || ((w <= d_W2) || (h <= d_H2)))
+    {
+        cout << "No need to move the table" << endl;
+        cout << "Minimum distance to move the table : 0" << endl;
+    }
+    else if (((w > d_W1) || (h > d_H1)) || ((w > d_W2) || (h > d_H2)))
+    {
+        cout << "You need to move the table" << endl;
+        if ((((h - d_H1) <= d_H2) || ((w - d_W1) <= d_W2)) || (((h - d_H2) <= d_H1) || ((w - d_W2) <= d_W1)))
+        {
+            if (((h - d_H2 + y1) >= h) && (H > (y2-y1)))
+            {
+                double min_temp = h - H + y2;
+                min = min_temp < min ? min_temp : min;
+            }
+            if((d_W2 <= d_W1) && (d_H1 <= d_H2))
+            {
+                double min_temp = sqrt(pow(((x1 + d_W2)-x1),2) + pow(((y1 - d_H1) - y1),2));
+                min = min_temp < min ? min_temp : min;
+                cout << "Move the lower left corner of the table from (" << x1 << "," << y1 << ") to (" << (x1 + d_W2) << "," << (y1 - d_H1) << ")" << endl;
+                cout << "Move the lower right corner of the table from (" << x2 << "," << y2 << ") to (" << (x2 + d_W2) << "," << (y2 - d_H1) << ")" << endl;
+            }
+            if ((d_W2 <= d_W1) && (d_H1 >= d_H2))
+            {
+                double min_temp = sqrt(pow(((x1 + d_W2)-x1),2) + pow(((y1 + d_H2) - y1),2));
+                min = min_temp < min ? min_temp : min;
+                cout << "Move the lower left corner of the table from (" << x1 << "," << y1 << ") to (" << (x1 + d_W2) << "," << (y1 + d_H2) << ")" << endl;
+                cout << "Move the lower right corner of the table from (" << x2 << "," << y2 << ") to (" << (x2 + d_W2) << "," << (y2 + d_H2) << ")" << endl;
+            }
+            if ((d_W2 >= d_W1) && (d_H1 <= d_H2))
+            {
+                double min_temp = sqrt(pow(((x1 - d_W1)-x1),2) + pow(((y1 - d_H1) - y1),2));
+                min = min_temp < min ? min_temp : min;
+                cout << "Move the lower left corner of the table from (" << x1 << "," << y1 << ") to (" << (x1 - d_W1) << "," << (y1 - d_H1) << ")" << endl;
+                cout << "Move the lower right corner of the table from (" << x2 << "," << y2 << ") to (" << (x2 - d_W1) << "," << (y2 - d_H1) << ")" << endl;
+            }
+            if ((d_W2 >= d_W1) && (d_H1 >= d_H2))
+            {
+                double min_temp = sqrt(pow(((x1 - d_W1)-x1),2) + pow(((y1 + d_H2) - y1),2));
+                min = min_temp < min ? min_temp : min;
+                cout << "Move the lower left corner of the table from (" << x1 << "," << y1 << ") to (" << (x1 - d_W1) << "," << (y1 + d_H2) << ")" << endl;
+                cout << "Move the lower right corner of the table from (" << x2 << "," << y2 << ") to (" << (x2 - d_W1) << "," << (y2 + d_H2) << ")" << endl;
+            }
+            cout << "Minimum distance to move the table :" << min;
+        }
+        else if (((h - d_H1) > d_H2)  || ((h - d_H2) > d_H1) || ((w - d_W1) > d_W2) || ((w - d_W2) > d_W1))
+        {
+            cout << "But you don't have enough space to move the table" << endl;
+            cout << -1;
+        }
+    }
     return 0;
 }
