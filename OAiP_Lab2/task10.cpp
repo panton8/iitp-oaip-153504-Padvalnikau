@@ -38,6 +38,5 @@ int main()
     {
         cout << "ln|x| (min) = " << c;
     }
-    cout << "   " << a << " " << b << " "<< c;
     return 0;
 }

@@ -13,6 +13,7 @@
 координат. */
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace  std;
 
@@ -33,7 +34,7 @@ int main()
     if (((w <= d_W1) || (h <= d_H1)) || ((w <= d_W2) || (h <= d_H2)))
     {
         cout << "No need to move the table" << endl;
-        cout << "Minimum distance to move the table : 0" << endl;
+        cout << "Minimum distance to move the table : 0.000000" << endl;
     }
     else if (((w > d_W1) || (h > d_H1)) || ((w > d_W2) || (h > d_H2)))
     {
@@ -70,7 +71,7 @@ int main()
                 double min_temp = sqrt(pow(((x1 - d_W1)-x1),2) + pow(((y1 + d_H2) - y1),2));
                 min = min_temp < min ? min_temp : min;
             }
-            cout << "Minimum distance to move the table :" << min;
+            cout << "Minimum distance to move the table :" << fixed << setprecision(6) << min;
         }
         else if (((h - d_H1) > d_H2)  || ((h - d_H2) > d_H1) || ((w - d_W1) > d_W2) || ((w - d_W2) > d_W1))
         {

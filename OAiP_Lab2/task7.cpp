@@ -132,9 +132,9 @@ int main()
         cout << "Solution for x^3 + px + q = 0 :" << endl;
         cout << "x1 = " << k1 << endl;
     }
-    else if (D3 <0)
+    else if (D3 < 0)
     {
-        double k2 = 2 * sqrt(-p/3) * cos(F/3);
+        double k2 = 2 * sqrt(-p/3) * cos(F/3) ;
         double k3 = 2 * sqrt(-p/3) * cos(F/3 + (2 * Pi / 3));
         double k4 = 2 * sqrt(-p/3) * cos(F/3 + (4 * Pi / 3)) ;
         cout << "Solution for x^3 + px + q = 0 :" << endl;
