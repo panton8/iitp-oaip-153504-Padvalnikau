@@ -15,6 +15,11 @@ int main()
     double z,a,c,x;
     cout << "Choose num of function: 1)2x; 2)x^3; 3)x/3." << endl;
     cin >> function;
+    if (function != 1 && function != 2 && function !=3)
+    {
+        cout << "Try again" << endl;
+        return 0;
+    }
     cout << "Enter a,z,c" << endl;
     cin >> a >> z >> c;
     if (z <= 1)
@@ -40,6 +45,7 @@ int main()
         case 3:
             cout << "Calculation is performed using the function f(x)=x/3" << endl;
             cout << (a * log(fabs(x)))+ pow(e,x) + (c * pow(sin((x/3) * pow(x,2) - 1),3));
+            break;
     }
     return  0;
 }
