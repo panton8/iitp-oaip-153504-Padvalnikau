@@ -17,6 +17,11 @@ int main()
 
     //First:
     double D1 = b * b - 4 * a * c;
+    if (!a || ! b || !c)
+    {
+        cout << "The equation takes on a different form.Enter other values!";
+        return 0;
+    }
     if (D1 > 0)
     {
         double t1 = (-b - sqrt(D1) )/ (2 * a);
@@ -64,6 +69,11 @@ int main()
     cout << "Enter a,b,c :";
     cin >> a >> b >> c;
     double D2 = b * b - 4*a*(c - 2 * a);
+    if (a == 0 )
+    {
+        cout << "x1 = 0";
+        return 0;
+    }
     if (D2 > 0)
     {
         double y1 = (-b-sqrt(D2))/(2 * a);
