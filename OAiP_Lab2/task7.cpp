@@ -5,15 +5,15 @@
 7.3 x^3 + px + q = 0*/
 #include <iostream>
 #include <cmath>
-#define Pi 3.14
+#define Pi 3.1415926535
 
 using namespace std;
 
 int main()
 {
     double a,b,c,p,q;
-    cout << "Enter the values of all(5) variables :" << endl;
-    cin >> a >> b >> c >> p >> q;
+    cout << "Enter a,b,c :" << endl;
+    cin >> a >> b >> c;
 
     //First:
     double D1 = b * b - 4 * a * c;
@@ -61,6 +61,8 @@ int main()
     }
 
     //Second:
+    cout << "Enter a,b,c :";
+    cin >> a >> b >> c;
     double D2 = b * b - 4*a*(c - 2 * a);
     if (D2 > 0)
     {
@@ -87,14 +89,14 @@ int main()
     }
     else if (D2 == 0)
     {
-       double y3 = (-b) / (2 * a) ;
-       if (y3 * y3 - 4 > 0)
-       {
-           double z5 = (-((-y3) + (sqrt(y3 * y3 - 4))) / 2);
-           double z6 = (-((-y3) - (sqrt(y3 * y3 - 4))) / 2);
-           cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0 :" << endl;
-           cout << "x1 = " << z5 << endl << "x2 = " << z6;
-       }
+        double y3 = (-b) / (2 * a) ;
+        if (y3 * y3 - 4 > 0)
+        {
+            double z5 = (-((-y3) + (sqrt(y3 * y3 - 4))) / 2);
+            double z6 = (-((-y3) - (sqrt(y3 * y3 - 4))) / 2);
+            cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0 :" << endl;
+            cout << "x1 = " << z5 << endl << "x2 = " << z6;
+        }
         if (y3 * y3 - 4 < 0)
         {
             cout << "No solution for ax^4 + bx^3 + cx^2 + bx + a = 0 !" << endl;
@@ -106,20 +108,10 @@ int main()
     }
 
     //Third
+    cout << "Enter p,q :";
+    cin >> p >> q;
     double D3 = pow(p/3,3) + pow(q/2,2);
     double F;
-    if (q == 0)
-    {
-        F = Pi / 2;
-    }
-    else if (q > 0)
-    {
-        F = atan (sqrt(-D3) / (-q/2))+ Pi;
-    }
-    else if (q < 0)
-    {
-        F = (sqrt(-D3) / (-q/2));
-    }
     if (D3 > 0)
     {
         double A =  double (pow((-q/2) + sqrt(D3),(1.0/3)));
@@ -134,6 +126,7 @@ int main()
     }
     else if (D3 < 0)
     {
+        F = acos((-q / 2.) * pow((3 / -p), 3 / 2.0));
         double k2 = 2 * sqrt(-p/3) * cos(F/3) ;
         double k3 = 2 * sqrt(-p/3) * cos(F/3 + (2 * Pi / 3));
         double k4 = 2 * sqrt(-p/3) * cos(F/3 + (4 * Pi / 3)) ;
