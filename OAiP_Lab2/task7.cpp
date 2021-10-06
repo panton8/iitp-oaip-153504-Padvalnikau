@@ -17,7 +17,7 @@ int main()
 
     //First:
     double D1 = b * b - 4 * a * c;
-    if (!a || ! b || !c)
+    if (!a)
     {
         cout << "The equation takes on a different form.Enter other values!";
         return 0;
@@ -71,10 +71,9 @@ int main()
     double D2 = b * b - 4*a*(c - 2 * a);
     if (a == 0 )
     {
-        cout << "x1 = 0";
-        return 0;
+        cout << "x1 = 0" << endl;
     }
-    if (D2 > 0)
+    else if (D2 > 0)
     {
         double y1 = (-b-sqrt(D2))/(2 * a);
         double y2 = (-b+sqrt(D2))/(2 * a);
@@ -89,23 +88,37 @@ int main()
             cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0(First part) :" << endl;
             cout << "x1 = " << z1 << endl << "x2 = " << z2 << endl;
         }
+        if(y1 * y1 -4 == 0)
+        {
+            double z3 = (y1 / 2);
+            cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0 :" << endl;
+            cout << "x1 = " << z3 << endl;
+        }
+
         if( y2 * y2 - 4 > 0)
         {
-            double z3 = (-((-y2) + (sqrt(y2 * y2 - 4))) / 2);
-            double z4 = (-((-y2) - (sqrt(y2 * y2 - 4))) / 2);
+            double z4 = (-((-y2) + (sqrt(y2 * y2 - 4))) / 2);
+            double z5 = (-((-y2) - (sqrt(y2 * y2 - 4))) / 2);
             cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0(Second part) :" << endl;
-            cout << "x3 = " << z3 << endl << "x4 = " << z4 << endl;
+            cout << "x3 = " << z4 << endl << "x4 = " << z5 << endl;
         }
+        if(y2 * y2 -4 == 0)
+        {
+            double z6 = (y2 / 2);
+            cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0 :" << endl;
+            cout << "x1 = " << z6<< endl;
+        }
+
     }
     else if (D2 == 0)
     {
         double y3 = (-b) / (2 * a) ;
         if (y3 * y3 - 4 > 0)
         {
-            double z5 = (-((-y3) + (sqrt(y3 * y3 - 4))) / 2);
-            double z6 = (-((-y3) - (sqrt(y3 * y3 - 4))) / 2);
+            double z7 = (-((-y3) + (sqrt(y3 * y3 - 4))) / 2);
+            double z8 = (-((-y3) - (sqrt(y3 * y3 - 4))) / 2);
             cout << "Solution for ax^4 + bx^3 + cx^2 + bx + a = 0 :" << endl;
-            cout << "x1 = " << z5 << endl << "x2 = " << z6;
+            cout << "x1 = " << z7 << endl << "x2 = " << z8;
         }
         if (y3 * y3 - 4 < 0)
         {
@@ -124,9 +137,13 @@ int main()
     double F;
     if (D3 > 0)
     {
-        double A =  double (pow((-q/2) + sqrt(D3),(1.0/3)));
+        double a = (-q/2) + sqrt(D3);
+        double a1 = fabs(a);
+        double a2 = pow (a1,1.0/3);
+        double A;
+        a < 0 ? A = -a2 : A = a2;
         double b =(-q/2) - sqrt(D3);
-        double b1 = fabs((-q/2) - sqrt(D3));
+        double b1 = fabs(b);
         double b2 = pow(b1,1.0/3);
         double B;
         b < 0 ? B = -b2 : B = b2;
