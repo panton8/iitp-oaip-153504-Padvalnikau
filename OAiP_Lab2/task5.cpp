@@ -14,7 +14,7 @@ int main()
         Z = a+b/c;
         cout << Z;
     }
-    if (c < d && a>= d)
+    else if (c < d && a>= d)
     {
         Z = a-b/c;
         cout << Z;

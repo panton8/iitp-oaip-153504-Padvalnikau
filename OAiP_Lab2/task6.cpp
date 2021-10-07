@@ -21,11 +21,10 @@ int main()
         case 7:
             Y = pow(a, 2) + c;
             break;
+        default :
+            Y = pow(a + b, 3);
         case 3:
             Y = a - b * c;
-            break;
-        default:
-            Y = pow(a + b, 3);
             break;
     }
             cout << Y;
