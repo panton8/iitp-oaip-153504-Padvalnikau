@@ -12,18 +12,16 @@ int main()
     if (c >= d && a<d)
     {
         Z = a+b/c;
-        cout << Z;
     }
     else if (c < d && a>= d)
     {
         Z = a-b/c;
-        cout << Z;
     }
     else
     {
         Z = 0;
-        cout << Z;
     }
+    cout << Z;
     return 0;
 }
 
