@@ -13,33 +13,30 @@
 
 int main()
 {
-    double result_sin, result_cos,result_atan,lower_limit,upper_limit,limit_step,common_result;
+    double result_sin, result_cos,result_atan,lower_limit,upper_limit,limit_step,common_result,x_min;
     int parts_of_limit;
     std::cout << "Enter lower and upper limits: " << std::endl;
     std::cin >> lower_limit >> upper_limit;
-    double min_res_sin = fabs(sin(lower_limit));
-    double min_res_cos = fabs(cos(lower_limit));
-    double min_res_atan = fabs(atan(lower_limit));
     std::cout << "Enter parts of limit : " << std::endl;
     std::cin >> parts_of_limit;
     limit_step = (upper_limit - lower_limit) / parts_of_limit;
-    std::cout << "Therefore step of limit : " << limit_step << std::endl;
+    std::cout << "Therefore, step of limit : " << limit_step << std::endl;
+    double min_common_res = fabs(sin(lower_limit) + cos(lower_limit) - 2 * atan(lower_limit));
     double x = lower_limit;
     for(int i = 1; i <= parts_of_limit; i++ )
     {
         x+=limit_step;
-        result_sin = fabs(sin(x));
-        if(result_sin < min_res_sin)
-            min_res_sin = result_sin;
-        result_cos = fabs(cos(x));
-        if(result_cos < min_res_cos)
-            min_res_cos = result_cos;
-        result_atan = fabs(atan(x));
-        if(result_atan < min_res_atan)
-            min_res_atan = result_atan;
-        common_result = min_res_sin + min_res_cos - 2  * min_res_atan;
+        result_sin = sin(x);
+        result_cos = cos(x);
+        result_atan = atan(x);
+        common_result = fabs(result_sin + result_cos - 2  * result_atan);
+        if (common_result < min_common_res)
+        {
+            min_common_res = common_result;
+            x_min = x;
+        }
     }
-    std::cout << "Result of expression: " << common_result;
+    std::cout << "Minimum approximate value :" <<min_common_res << std::endl;
+    std::cout << "With x = " << x_min;
     return 0;
 }
-
