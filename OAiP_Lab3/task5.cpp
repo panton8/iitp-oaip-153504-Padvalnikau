@@ -17,6 +17,11 @@ void function_S (double x)
     int n ;
     std::cout << "Enter number of terms(more then 3): " << std::endl;
     std::cin >> n;
+    if (!std::cin)
+    {
+        std::cout << "Variable input error" << std::endl;
+        exit(-1);
+    }
     int sign = -1;
     int i;
     for(i = 3; i < n ; i += 2, sign = -sign)

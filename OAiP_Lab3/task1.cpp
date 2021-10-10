@@ -6,7 +6,7 @@
 
 int main()
 {
-    int i = 1;
+    int i = 0;
     int sum = 0;
     int a,b;
     while(i <= 30)

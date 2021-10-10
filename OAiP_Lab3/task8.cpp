@@ -47,4 +47,3 @@ int main()
     while (number <= 999999);
     return 0;
 }
-

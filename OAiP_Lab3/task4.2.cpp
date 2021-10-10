@@ -20,4 +20,3 @@ int main()
     numbers_for_sum(10);
     return 0;
 }
-

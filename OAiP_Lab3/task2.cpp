@@ -14,6 +14,11 @@ int main()
     int n;
     std::cout << "Enter n" << std::endl;
     std::cin >> n;
+    if (!std::cin)
+    {
+        std::cout << "Variable input error" << std::endl;
+        return -1;
+    }
     double Dn;
     int i = 1;
     do
@@ -26,4 +31,3 @@ int main()
         std::cout << std::fixed << std::setprecision(3) << "Sum of your series is " << sum << std::endl;
     return 0;
 }
-

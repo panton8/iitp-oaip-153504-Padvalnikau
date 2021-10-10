@@ -20,4 +20,3 @@ int main()
         std::cout << "This number is " << number;
     return 0;
 }
-

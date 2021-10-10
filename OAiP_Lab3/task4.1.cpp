@@ -9,6 +9,11 @@ int main()
 {
     int n;
     std::cin >> n;
+    if (!std::cin)
+    {
+        std::cout << "Variable input error" << std::endl;
+        return -1;
+    }
     int sum = 0;
     int i;
     for (i = 1; i <= n; i++)
