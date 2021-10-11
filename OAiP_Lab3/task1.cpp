@@ -6,14 +6,15 @@
 
 int main()
 {
-    int i = 0;
+    int i = 1;
     int sum = 0;
     int a,b;
     while(i <= 30)
     {
-        i++;
-        i % 2 == 1 ? a = i, b = i*i : a = i/2,b = i*i*i;
+        i % 2 == 1 ? a = i : a = i/2;
+        i % 2 == 1 ? b = i*i : b = i*i*i;
         sum += pow(a-b,2);
+        i++;
     }
     std::cout << "Sum of 30 terms = " << sum;
     return 0;
