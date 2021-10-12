@@ -10,13 +10,13 @@ void numbers_for_sum(int n)
     int sum = 0;
     while (n >= 1)
     {
-        sum += n;
+        n % 2 == 0 ? sum += n : sum += 0;
         n--;
     }
     std::cout <<"Sum of n terms = " << sum;
 }
 int main()
 {
-    numbers_for_sum(10);
+    numbers_for_sum(15);
     return 0;
 }

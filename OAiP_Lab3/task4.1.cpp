@@ -8,6 +8,7 @@
 int main()
 {
     int n;
+    std::cout << "Enter amount of numbers: " << std::endl;
     std::cin >> n;
     if (!std::cin)
     {
@@ -18,7 +19,7 @@ int main()
     int i;
     for (i = 1; i <= n; i++)
     {
-        sum += i;
+        i % 2 == 0 ? sum += i : sum +=0;
     }
     std::cout << "Sum of n terms = " << sum;
     return 0;
