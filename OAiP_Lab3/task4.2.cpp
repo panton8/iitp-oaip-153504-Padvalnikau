@@ -5,18 +5,25 @@
 
 #include <iostream>
 
-void numbers_for_sum(int n)
+int sum (int number)
 {
-    int sum = 0;
-    while (n >= 1)
-    {
-        n % 2 == 0 ? sum += n : sum += 0;
-        n--;
-    }
-    std::cout <<"Sum of n terms = " << sum;
+    if (number == 0)
+        return 0;
+    return (number % 2 == 0) ? number + sum(number - 2) :  sum(number-1);
 }
+
 int main()
 {
-    numbers_for_sum(15);
+    int n;
+    std::cout << "Enter amount of numbers: " << std::endl;
+    if (std::cin >> n)
+    {
+        std::cout << "sum of n terms = " << sum(n);
+    }
+    else
+    {
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
     return 0;
 }
