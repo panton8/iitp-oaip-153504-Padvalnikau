@@ -11,16 +11,36 @@ S(x), затем с помощью полученного ряда найти з
 #include<iostream>
 #include<cmath>
 
-void function_S (double x)
+int main()
 {
+    double x;
+    std::cout << "Enter x (from 0.1 to 1)" <<std::endl;
+    if (std::cin >> x){
+    }
+    else
+    {
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
+    if (x < 0.1 || x > 1)
+    {
+        std::cout << "Incorrect entered value";
+        return -1;
+    }
     double res = x;
     int n ;
     std::cout << "Enter number of terms(more then 3): " << std::endl;
-    std::cin >> n;
-    if (!std::cin)
+    if (std::cin >> n){
+    }
+    else
     {
-        std::cout << "Variable input error" << std::endl;
-        exit(-1);
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
+    if (n < 3)
+    {
+        std::cout << "Incorrect entered value";
+        return -1;
     }
     int sign = -1;
     int i;
@@ -30,9 +50,5 @@ void function_S (double x)
     }
     std::cout << "S(x) = " << res << std::endl;
     std::cout << "Y(x) = " << sin(x);
-}
-int main()
-{
-    function_S(0.9);
     return 0;
 }
