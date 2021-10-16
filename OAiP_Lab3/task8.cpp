@@ -16,11 +16,11 @@ int main()
     for (int i = 153; i < 1000000; i++)
     {
         int sixth_digit = i / 100000;
-        int fifth_digit = (i - sixth_digit * 100000) / 10000;
-        int fourth_digit = (i - sixth_digit * 100000 - fifth_digit * 10000) / 1000;
-        int third_digit = (i - sixth_digit * 100000 - fifth_digit * 10000 - fourth_digit * 1000) / 100;
-        int second_digit = (i - sixth_digit * 100000 - fifth_digit * 10000 - fourth_digit * 1000 - third_digit * 100) / 10;
-        int first_digit = (i - sixth_digit * 100000 - fifth_digit * 10000 - fourth_digit * 1000 - third_digit * 100 - second_digit * 10);
+        int fifth_digit = (i / 10000) % 10;
+        int fourth_digit = (i / 1000) % 10;
+        int third_digit = (i / 100) % 10;
+        int second_digit = (i / 10) % 10;
+        int first_digit = i % 10;
         if (sixth_digit)
             number_of_digits = 6;
         if (fifth_digit && !sixth_digit)
