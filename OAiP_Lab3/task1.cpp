@@ -11,8 +11,8 @@ int main()
     int a,b;
     while(i <= 30)
     {
-        i % 2 == 1 ? a = i : a = i/2;
-        i % 2 == 1 ? b = i*i : b = i*i*i;
+        a = i % 2 == 1 ? i : i/2;
+        b = i % 2 == 1 ? i*i : i*i*i;
         sum += pow(a-b,2);
         i++;
     }

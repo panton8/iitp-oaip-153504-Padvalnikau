@@ -12,11 +12,17 @@ int main()
 {
     double sum = 0;
     int n;
-    std::cout << "Enter n" << std::endl;
-    std::cin >> n;
-    if (!std::cin)
+    std::cout << "Enter the number of terms: " << std::endl;
+    if (std::cin >> n){
+    }
+    else
     {
-        std::cout << "Variable input error" << std::endl;
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
+    if(!n || n < !n)
+    {
+        std::cout << "Enter a positive number of terms";
         return -1;
     }
     double Dn;
@@ -28,6 +34,6 @@ int main()
         i++;
     }
     while ((i < n+1) && Dn > E);
-        std::cout << std::fixed << std::setprecision(3) << "Sum of your series is " << sum << std::endl;
+    std::cout << std::fixed << std::setprecision(3) << "Sum of your series is " << sum << std::endl;
     return 0;
 }

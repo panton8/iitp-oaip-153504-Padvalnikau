@@ -9,12 +9,18 @@
 int main()
 {
     int n;
-    std::cout << "Enter amount of numbers: " <<std::endl;
-    std::cin >> n;
+    std::cout << "Enter amount of numbers: " << std::endl;
+    if (std::cin >> n){
+    }
+    else
+    {
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
     int k = 1;
     int sum = 0;
     int sign = 1;
-    int array [n];
+    int array[n];
     srand(time(0));
     for(int i = 0; i < n ; i++)
         array[i] = 1 + rand() % 20;
@@ -27,6 +33,6 @@ int main()
         k *= 2;
         sign *= -1;
     }
-    std::cout << std::endl << "Sum of numbers in your massive: " << sum;
+    std::cout << std::endl << "Result of expression with your massive: " << sum;
     return 0;
 }

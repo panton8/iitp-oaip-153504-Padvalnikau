@@ -11,39 +11,32 @@
 
 int main()
 {
-    int number = 153;
-    int first_digit,second_digit,third_digit,fourth_digit,fifth_digit,sixth_digit,seventh_digit,number_of_digits;
-    int a,b,c,d,e,f,g;
-    do
+    int number_of_digits;
+    std::cout << "Armstrong numbers: ";
+    for (int i = 153; i < 1000000; i++)
     {
-        first_digit = number / 1000000;
-        second_digit = (number - (first_digit * 1000000)) / 100000;
-        third_digit = (number - (first_digit * 1000000) - (second_digit * 100000)) / 10000;
-        fourth_digit = (number - (first_digit * 1000000) - (second_digit * 100000) - (third_digit * 10000)) / 1000;
-        fifth_digit = (number - (first_digit * 1000000) - (second_digit * 100000) - (third_digit * 10000) - (fourth_digit * 1000))/100;
-        sixth_digit = (number - (first_digit * 1000000) - (second_digit * 100000) - (third_digit * 10000) - (fourth_digit * 1000) - (fifth_digit * 100))/10;
-        seventh_digit = (number - (first_digit * 1000000) - (second_digit * 100000) - (third_digit * 10000) - (fourth_digit * 1000) - (fifth_digit * 100) - (sixth_digit*10));
-        number++;
-        if (first_digit)
-            number_of_digits = 7;
-        else if (!first_digit && second_digit)
+        int sixth_digit = i / 100000;
+        int fifth_digit = (i - sixth_digit * 100000) / 10000;
+        int fourth_digit = (i - sixth_digit * 100000 - fifth_digit * 10000) / 1000;
+        int third_digit = (i - sixth_digit * 100000 - fifth_digit * 10000 - fourth_digit * 1000) / 100;
+        int second_digit = (i - sixth_digit * 100000 - fifth_digit * 10000 - fourth_digit * 1000 - third_digit * 100) / 10;
+        int first_digit = (i - sixth_digit * 100000 - fifth_digit * 10000 - fourth_digit * 1000 - third_digit * 100 - second_digit * 10);
+        if (sixth_digit)
             number_of_digits = 6;
-        else if(!second_digit && third_digit)
+        if (fifth_digit && !sixth_digit)
             number_of_digits = 5;
-        else if(!third_digit && fourth_digit)
+        if (fourth_digit && !fifth_digit)
             number_of_digits = 4;
-        else if(!fourth_digit && fifth_digit)
+        if (third_digit && !fourth_digit)
             number_of_digits = 3;
-        a = (int)pow(first_digit,number_of_digits);
-        b = (int)pow(second_digit,number_of_digits);
-        c =(int) pow(third_digit,number_of_digits) ;
-        d = (int)pow (fourth_digit,number_of_digits);
-        e = (int)pow(fifth_digit,number_of_digits);
-        f = (int)pow(sixth_digit,number_of_digits) ;
-        g = (int)pow(seventh_digit,number_of_digits);
-        if(a + b + c + d + e + f + g == (number - 1))
-            std::cout << number - 1 <<" - one of the Armstrong numbers" << std::endl;
+        int a1 = (int) pow(sixth_digit, number_of_digits);
+        int a2 = (int) pow(fifth_digit, number_of_digits);
+        int a3 = (int) pow(fourth_digit, number_of_digits);
+        int a4 = (int) pow(third_digit, number_of_digits);
+        int a5 = (int) pow(second_digit, number_of_digits);
+        int a6 = (int) pow(first_digit, number_of_digits);
+        if ((a1 + a2 + a3 + a4 + a5 + a6 == i))
+            std::cout << i << "; ";
     }
-    while (number <= 999999);
     return 0;
 }

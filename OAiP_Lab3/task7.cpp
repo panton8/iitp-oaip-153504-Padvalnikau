@@ -7,16 +7,12 @@
 
 int main()
 {
-    int number = 10;
-    int first_digit;
-    int second_digit;
-    do
+    for (int i = 10;i < 100;i++ )
     {
-        number++;
-        first_digit = number / 10;
-        second_digit = number % 10;
+        int first_digit = i / 10;
+        int second_digit = i % 10;
+        if((pow(first_digit + second_digit,3) ) == pow(i,2))
+            std::cout << "This number is " << i;
     }
-    while (number <= 99 && pow((first_digit + second_digit ),3) != pow(number,2));
-        std::cout << "This number is " << number;
     return 0;
 }

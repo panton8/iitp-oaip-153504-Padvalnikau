@@ -16,12 +16,13 @@ int main()
     int M = 20;
     H = (B - A)/M;
     x = A + i * H;
-    int steps = B / x;
+    int steps = int(B / x);
+    std::cout << "The result of the calculation with x(" << A << ") = " << sin(A) - cos(A) << std::endl;
     for (; i <= steps; i++ )
     {
         x = A + i * H;
         common_result = sin(x) - cos(x);
-        std::cout << "The result of the calculation with x(" << x << ") =" << common_result << std::endl;
+        std::cout << "The result of the calculation with x(" << x << ") = " << common_result << std::endl;
     }
     return 0;
 }

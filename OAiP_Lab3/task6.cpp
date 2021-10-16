@@ -16,24 +16,36 @@ int main()
     double result_sin, result_cos,result_atan,lower_limit,upper_limit,limit_step,common_result,x_min;
     int parts_of_limit;
     std::cout << "Enter lower and upper limits: " << std::endl;
-    std::cin >> lower_limit >> upper_limit;
-    if (!std::cin)
+    if (std::cin >> lower_limit >> upper_limit){
+    }
+    else
     {
-        std::cout << "Variable input error" << std::endl;
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
+    if(upper_limit < lower_limit)
+    {
+        std::cout << "Your input is incorrect";
         return -1;
     }
     std::cout << "Enter parts of limit : " << std::endl;
-    std::cin >> parts_of_limit;
-    if (!std::cin)
+    if (std::cin >> parts_of_limit){
+    }
+    else
     {
-        std::cout << "Variable input error" << std::endl;
+        std::cout << "Incorrect type of variable";
+        return -1;
+    }
+    if(parts_of_limit < 1)
+    {
+        std::cout << "Your input is incorrect";
         return -1;
     }
     limit_step = (upper_limit - lower_limit) / parts_of_limit;
     std::cout << "Therefore, step of limit : " << limit_step << std::endl;
     double min_common_res = fabs(sin(lower_limit) + cos(lower_limit) - 2 * atan(lower_limit));
     double x = lower_limit;
-    for(int i = 1; i <= parts_of_limit; i++ )
+    for(int i = 0; i < parts_of_limit; i++ )
     {
         x+=limit_step;
         result_sin = sin(x);

@@ -9,17 +9,17 @@ int main()
 {
     int n;
     std::cout << "Enter amount of numbers: " << std::endl;
-    std::cin >> n;
-    if (!std::cin)
+    if (std::cin >> n){
+    }
+    else
     {
-        std::cout << "Variable input error" << std::endl;
+        std::cout << "Incorrect type of variable";
         return -1;
     }
     int sum = 0;
-    int i;
-    for (i = 1; i <= n; i++)
+    for (int i = 0; i <= n; i++)
     {
-        i % 2 == 0 ? sum += i : sum +=0;
+        sum += i % 2 == 0 ? i : 0;
     }
     std::cout << "Sum of n terms = " << sum;
     return 0;
