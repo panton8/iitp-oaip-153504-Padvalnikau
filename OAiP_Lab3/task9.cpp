@@ -5,33 +5,36 @@
 
 #include <iostream>
 #include <time.h>
-
+#include <cmath>
 int main()
 {
-    int n;
-    std::cout << "Enter amount of numbers: " << std::endl;
-    if (std::cin >> n){
-    }
-    else
+    int M;
+    long double n;
+    while(true)
     {
-        std::cout << "Incorrect type of variable";
-        return -1;
+        std::cout << "Enter amount of numbers: " << std::endl;
+        std::cin >> n;
+        if(std::cin.fail() || n < 0.0 || n > 214748364.0  || n != round(n))
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
     }
     int k = 1;
-    int sum = 0;
+    long long int sum = 0;
     int sign = 1;
-    int array[n];
     srand(time(0));
-    for(int i = 0; i < n ; i++)
-        array[i] = 1 + rand() % 20;
-    std::cout << "Your massive: " << std::endl;
-    for (int i = 0; i < n ; i++)
-        std::cout <<array[i] << "; ";
+    std::cout << "Your random numbers: ";
     for (int i = 0; i < n ; i++ )
     {
-        sum += sign * k * array[i];
+        M = -20 + rand () % 20;
+        sum += sign * k * M;
         k *= 2;
         sign *= -1;
+        std::cout << M << "; ";
     }
     std::cout << std::endl << "Result of expression with your massive: " << sum;
     return 0;

@@ -4,6 +4,7 @@
 4.2 Без использования цикла.*/
 
 #include <iostream>
+#include <cmath>
 
 int sum (int number)
 {
@@ -14,16 +15,20 @@ int sum (int number)
 
 int main()
 {
-    int n;
-    std::cout << "Enter amount of numbers: " << std::endl;
-    if (std::cin >> n)
+    double n;
+    while(true)
     {
-        std::cout << "sum of n terms = " << sum(n);
+        std::cout << "Enter amount of numbers: " << std::endl;
+        std::cin >> n;
+        if(std::cin.fail() || n < 0.0 || n > 9223372036854775807.0 || n!= round(n))
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
     }
-    else
-    {
-        std::cout << "Incorrect type of variable";
-        return -1;
-    }
+    std::cout << "sum of n terms = " << sum(n);
     return 0;
 }

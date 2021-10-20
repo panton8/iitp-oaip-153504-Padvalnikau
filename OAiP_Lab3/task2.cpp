@@ -6,34 +6,18 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
-#define E 0.001
 
-int main()
-{
+#define E 0.0000001
+
+int main() {
     double sum = 0;
-    int n;
-    std::cout << "Enter the number of terms: " << std::endl;
-    if (std::cin >> n){
-    }
-    else
-    {
-        std::cout << "Incorrect type of variable";
-        return -1;
-    }
-    if(!n || n < !n)
-    {
-        std::cout << "Enter a positive number of terms";
-        return -1;
-    }
     double Dn;
     int i = 1;
-    do
-    {
-        Dn = pow(1.0/2,i) + pow(1.0/3,i);
+    do {
+        Dn = pow(1.0 / 2, i) + pow(1.0 / 3, i);
         sum += Dn;
         i++;
-    }
-    while ((i < n+1) && Dn > E);
+    } while (Dn > E);
     std::cout << std::fixed << std::setprecision(3) << "Sum of your series is " << sum << std::endl;
     return 0;
 }

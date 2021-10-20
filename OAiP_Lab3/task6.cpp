@@ -10,41 +10,28 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 int main()
 {
-    double result_sin, result_cos,result_atan,lower_limit,upper_limit,limit_step,common_result,x_min;
-    int parts_of_limit;
-    std::cout << "Enter lower and upper limits: " << std::endl;
-    if (std::cin >> lower_limit >> upper_limit){
-    }
-    else
+    double result_sin, result_cos,result_atan,lower_limit,upper_limit,limit_step,common_result,x_min,x,parts_of_limit;
+    while(true)
     {
-        std::cout << "Incorrect type of variable";
-        return -1;
+        std::cout << "Enter lower ,upper limits and parts of limit: " << std::endl;
+        std::cin >> lower_limit >> upper_limit >> parts_of_limit;
+        if(std::cin.fail() || (lower_limit > upper_limit) || (lower_limit < -9223372036854775808.0  ||  lower_limit> 9223372036854775807.0 ) || (upper_limit < -9223372036854775808.0 ||  upper_limit> 9223372036854775807.0 ) || (parts_of_limit < 1.0 ||  parts_of_limit > 9223372036854775807.0 ||  parts_of_limit != round(parts_of_limit)))
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
     }
-    if(upper_limit < lower_limit)
-    {
-        std::cout << "Your input is incorrect";
-        return -1;
-    }
-    std::cout << "Enter parts of limit : " << std::endl;
-    if (std::cin >> parts_of_limit){
-    }
-    else
-    {
-        std::cout << "Incorrect type of variable";
-        return -1;
-    }
-    if(parts_of_limit < 1)
-    {
-        std::cout << "Your input is incorrect";
-        return -1;
-    }
+    x = lower_limit;
     limit_step = (upper_limit - lower_limit) / parts_of_limit;
     std::cout << "Therefore, step of limit : " << limit_step << std::endl;
     double min_common_res = fabs(sin(lower_limit) + cos(lower_limit) - 2 * atan(lower_limit));
-    double x = lower_limit;
     for(int i = 0; i < parts_of_limit; i++ )
     {
         x+=limit_step;
@@ -59,6 +46,6 @@ int main()
         }
     }
     std::cout << "Minimum approximate value :" <<min_common_res << std::endl;
-    std::cout << "With x = " << x_min;
+    std::cout << "With x = " <<std::fixed << std::setprecision(20) << x_min;
     return 0;
 }

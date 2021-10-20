@@ -4,19 +4,25 @@
 4.1 С использованием цикла.*/
 
 #include <iostream>
+#include <cmath>
 
 int main()
 {
-    int n;
-    std::cout << "Enter amount of numbers: " << std::endl;
-    if (std::cin >> n){
-    }
-    else
-    {
-        std::cout << "Incorrect type of variable";
-        return -1;
-    }
+    double n;
     int sum = 0;
+    while(true)
+    {
+        std::cout << "Enter number of terms(more then 3): " << std::endl;
+        std::cin >> n;
+        if(std::cin.fail() || n < 4.0 || n > 214748364.0 || n!= round(n))
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
+    }
     for (int i = 0; i <= n; i++)
     {
         sum += i % 2 == 0 ? i : 0;

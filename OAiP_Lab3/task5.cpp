@@ -14,34 +14,34 @@ S(x), затем с помощью полученного ряда найти з
 int main()
 {
     double x;
-    std::cout << "Enter x (from 0.1 to 1)" <<std::endl;
-    if (std::cin >> x){
-    }
-    else
+    double n ;
+    while(true)
     {
-        std::cout << "Incorrect type of variable";
-        return -1;
+        std::cout << "Enter number of terms(more then 3): " << std::endl;
+        std::cin >> n;
+        if(std::cin.fail() || n < 4.0 || n > 214748364.0 || n!= round(n))
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
     }
-    if (x < 0.1 || x > 1)
+    while(true)
     {
-        std::cout << "Incorrect entered value";
-        return -1;
+        std::cout << "Enter x (from 0.1 to 1)" <<std::endl;
+        std::cin >> x;
+        if(std::cin.fail() || x < 0.1 || x > 1)
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
     }
     double res = x;
-    int n ;
-    std::cout << "Enter number of terms(more then 3): " << std::endl;
-    if (std::cin >> n){
-    }
-    else
-    {
-        std::cout << "Incorrect type of variable";
-        return -1;
-    }
-    if (n < 3)
-    {
-        std::cout << "Incorrect entered value";
-        return -1;
-    }
     int sign = -1;
     int i;
     for(i = 3; i < n ; i += 2, sign = -sign)
