@@ -20,7 +20,7 @@ int main()
     {
         std::cout << "Enter amount of numbers: " << std::endl;
         std::cin >> n;
-        if(std::cin.fail() || n < 0.0 || n > 9223372036854775807.0 || n!= round(n))
+        if(std::cin.fail() || n < 1 || n != (long long)n || n!= round(n))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();

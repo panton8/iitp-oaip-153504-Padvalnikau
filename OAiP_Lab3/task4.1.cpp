@@ -14,7 +14,7 @@ int main()
     {
         std::cout << "Enter number of terms(more then 3): " << std::endl;
         std::cin >> n;
-        if(std::cin.fail() || n < 4.0 || n > 214748364.0 || n!= round(n))
+        if(std::cin.fail() || n !=(long long)n || n!= round(n) || n < 1)
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();

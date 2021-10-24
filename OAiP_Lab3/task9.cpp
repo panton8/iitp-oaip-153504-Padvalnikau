@@ -14,7 +14,7 @@ int main()
     {
         std::cout << "Enter amount of numbers: " << std::endl;
         std::cin >> n;
-        if(std::cin.fail() || n < 0.0 || n > 214748364.0  || n != round(n))
+        if(std::cin.fail() || n != (long long )n || n < 1  || n != round(n))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -26,11 +26,11 @@ int main()
     int k = 1;
     long long int sum = 0;
     int sign = 1;
-    srand(time(0));
+    srand(time(NULL));
     std::cout << "Your random numbers: ";
     for (int i = 0; i < n ; i++ )
     {
-        M = -20 + rand () % 20;
+        M = 1 + rand () % 20;
         sum += sign * k * M;
         k *= 2;
         sign *= -1;

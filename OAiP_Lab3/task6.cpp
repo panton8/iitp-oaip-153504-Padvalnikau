@@ -19,7 +19,7 @@ int main()
     {
         std::cout << "Enter lower ,upper limits and parts of limit: " << std::endl;
         std::cin >> lower_limit >> upper_limit >> parts_of_limit;
-        if(std::cin.fail() || (lower_limit > upper_limit) || (lower_limit < -9223372036854775808.0  ||  lower_limit> 9223372036854775807.0 ) || (upper_limit < -9223372036854775808.0 ||  upper_limit> 9223372036854775807.0 ) || (parts_of_limit < 1.0 ||  parts_of_limit > 9223372036854775807.0 ||  parts_of_limit != round(parts_of_limit)))
+        if(std::cin.fail() || (lower_limit > upper_limit) || (lower_limit != (long long)lower_limit) || (upper_limit != (long long)upper_limit || (parts_of_limit < 1.0 ||  parts_of_limit != (long long)parts_of_limit) ||  parts_of_limit != round(parts_of_limit)))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
