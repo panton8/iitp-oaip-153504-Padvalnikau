@@ -21,7 +21,7 @@ int main()
         }
         break;
     }
-    int arr [N][M];
+    int arr[N][M];
     std::cout << "Enter terms of massive: " << std::endl;
     for(i = 0; i < N ; i++)
     {

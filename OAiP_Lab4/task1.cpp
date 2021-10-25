@@ -14,7 +14,7 @@ int main()
     while(true)
     {
         std::cin >> k;
-        if(std::cin.fail() ||  k != (long long)k || k != round(k))
+        if(std::cin.fail() || k < 1 || k != (long long)k || k != round(k))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -23,7 +23,7 @@ int main()
         }
         break;
     }
-    int arr [k];
+    int arr[k];
     std::cout << "Enter terms of array: " <<std::endl;
     for(int i = 0; i < k ; i++)
         while(true)
