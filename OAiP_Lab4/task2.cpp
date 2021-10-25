@@ -13,7 +13,7 @@ int main()
     std::cout << "Enter size(N and M) of array: " << std::endl;
     while(true) {
         std::cin >> N >> M;
-        if (std::cin.fail() || N != (long long) N || N != round(N) || M != (long long) M || M != round(M)) {
+        if (std::cin.fail() || N < 1 || M < 1 || N != (long long) N || N != round(N) || M != (long long) M || M != round(M)) {
             std::cout << "Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
             std::cin.ignore(32000, '\n');
