@@ -30,8 +30,8 @@ int main()
         std::cout << arr[i] << " ;";
     for(int i = 0; i < k - 1; i++)
     {
-        for (int j=0; j<k-1; j++)
-            if (arr[j] >=0 && arr[j+1]<0)
+        for (int j = 0; j < k-1; j++)
+            if (arr[j] >= 0 && arr[j+1] < 0)
                 std::swap(arr[j], arr[j+1]);
 
     }
