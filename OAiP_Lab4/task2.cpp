@@ -5,22 +5,12 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 int main()
 {
     int numbers = 0,i,j;
-    int N = 0,M = 0;
-    std::cout << "Enter size(N and M) of array: " << std::endl;
-    while(true) {
-        std::cin >> N >> M;
-        if (std::cin.fail() || N < 1 || M < 1 || N != (long long) N || N != round(N) || M != (long long) M || M != round(M)) {
-            std::cout << "Incorrect type of variable! Please,enter your value again: " << std::endl;
-            std::cin.clear();
-            std::cin.ignore(32000, '\n');
-            continue;
-        }
-        break;
-    }
+    const int N = 4,M = 3;
     int arr[N][M];
     std::cout << "Enter terms of massive: " << std::endl;
     for(i = 0; i < N ; i++)
@@ -44,16 +34,16 @@ int main()
     {
         for(j = 0; j < M ; j++)
         {
-            std::cout << arr[i][j] << " ";
-            if (j == M - 1)
-                std::cout << std::endl;
+            std::cout << std::setw(3) << arr[i][j] << " ";
         }
+        std::cout << std::endl;
     }
+
     for (i = 0; i < N; i++)
     {
         for (j = 0; j < M; j++)
         {
-            if (i + j > M - 1)
+            if (i + j > M - 1 )
                 if(arr[i][j]>0)
                     numbers++;
             }
