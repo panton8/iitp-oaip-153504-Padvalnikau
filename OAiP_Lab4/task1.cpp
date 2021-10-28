@@ -9,20 +9,7 @@
 
 int main()
 {
-    int k = 0;
-    std::cout << "Enter size of array: " << std::endl;
-    while(true)
-    {
-        std::cin >> k;
-        if(std::cin.fail() || k < 1 || k != (long long)k || k != round(k))
-        {
-            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
-            std::cin.clear();
-            std::cin.ignore(32000,'\n');
-            continue;
-        }
-        break;
-    }
+    const int k = 8;
     int arr[k];
     std::cout << "Enter terms of array: " <<std::endl;
     for(int i = 0; i < k ; i++)
