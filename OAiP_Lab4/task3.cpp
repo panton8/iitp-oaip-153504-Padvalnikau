@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
     while(true)
     {
         std::cin >> N;
-        if(std::cin.fail() || N < 1 ||  N != (long long)N || N!= round(N))
+        if(std::cin.fail() || N < 2 ||  N != (long long)N || N!= round(N))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -22,7 +23,11 @@ int main()
         }
         break;
     }
-    int arr[N][N];
+    int **arr = new int* [N];
+    for (int i = 0; i < N; i++)
+    {
+        arr[i] = new int [N];
+    }
     std::cout << "Enter terms of massive: " <<std::endl;
     for(int i = 0; i < N ; i++)
     {
@@ -47,10 +52,9 @@ int main()
     {
         for(int j = 0; j < N ; j++)
         {
-            std::cout << arr[i][j] << " ";
-            if (j == N - 1)
-                std::cout << std::endl;
+            std::cout << std::setw(3) << arr[i][j] << " ";
         }
+        std::cout << std::endl;
     }
     std::cout << std::endl;
     int str_min ;
@@ -94,10 +98,15 @@ int main()
         {
             for (int j = 0; j < N; j++)
             {
-                std::cout << arr[i][j] << " ";
+                std::cout << std::setw(3) << arr[i][j] << " ";
             }
             std::cout << std::endl;
         }
     }
+    for(int i = 0;i < N; i++)
+    {
+        delete[] arr[i];
+    }
+    delete [] arr;
     return 0;
 }
