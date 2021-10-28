@@ -1,14 +1,10 @@
-//Лабораторная 4, задача 10. Выполнена: Подвальников А.С.
-/*Построить магический квадрат любого порядка, используя любой
-алгоритм. Выделение памяти через функции языка С.*/
-
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 int main()
 {
-
-    int N = 0,i,j;
+    int N = 0;
     std::cout << "Enter size of your magic square: " << std::endl;
     while(true)
     {
@@ -22,11 +18,15 @@ int main()
         }
         break;
     }
-    int arr [N][N];
+    int **arr;
+    arr = (int **) malloc(N * sizeof(int *));
+    for (int i = 0; i < N; i++) {
+        arr[i] = (int *) malloc(N * sizeof(int));
+    }
     std::cout << "Enter terms of massive" <<std::endl;
-    for(i = 0; i < N ; i++)
+    for(int i = 0; i < N ; i++)
     {
-        for(j = 0; j < N ; j++) {
+        for(int j = 0; j < N ; j++) {
             while(true)
             {
                 std::cin >> arr[i][j];
@@ -41,73 +41,51 @@ int main()
             }
         }
     }
-    for(i = 0; i < N ; i++)
+    std::cout << "Your square: " << std::endl;
+    for(int i = 0; i < N ; i++)
     {
-        for(j = 0; j < N ; j++)
+        for(int j = 0; j < N ; j++)
         {
-            std::cout << arr[i][j] << " ";
-            if (j == N - 1)
-                std::cout << std::endl;
+            std::cout << std::setw(3) << arr[i][j] << " ";
         }
+        std::cout << std::endl;
     }
-    while(true)
-    {
-        bool check = true;
-        int column = 0, line = 0;
-        for(int i = 0; i < N; i++)
-        {
-            column += arr[i][0];
-        }
-
-        for(int j = 0; j < N; j++)
-        {
-            line += arr[0][j];
-        }
-
-        if(column != line)
-        {
-            std::cout << "\nIt's not a magic square\n";
-            check = false;
-        }
-        if(check == false)
-            break;
-        line = 0;
-        for(int i = 0; i < N; i++)
-        {
-            for(int j = 0; j < N; j++)
-            {
-                line += arr[i][j];
-            }
-            if(column != line)
-            {
-                std::cout << "\nIt's not a magic square\n";
-                check = false;
-                break;
-            }
-            line = 0;
-        }
-        if(check == false)
-            break;
-        line = column;
-        column = 0;
-        for(int j = 0; j < N; j++)
-        {
-            for(int i = 0; i < N; i++)
-            {
-                column += arr[i][j];
-            }
-            if(column != line)
-            {
-                std::cout << "\nIt's not a magic square\n";
-                check = false;
-                break;
-            }
-            column = 0;
-        }
-        if(check == false)
-            break;
-        std::cout << "\nIt's a magic square\n";
-        break;
+//rows
+    int rows[N];
+    for(int i = 0; i < N; i++)
+    {   for(int j = 0; j < N; j++)
+            rows[i] += arr[i][j];
     }
+//columns
+    int cols[N];
+    for(int j = 0; j < N; j++)
+    {   for(int i = 0; i < N; i++)
+            cols[j] += arr[i][j];
+    }
+//diagonal1
+    int mD = 0;
+    for(int i = 0; i < N; i++)
+        mD += arr[i][i];
+//diagonal2
+    int sD = 0;
+    for(int i =0; i < N; i++)
+        sD += arr[i][N-i-1];
+//check
+    bool check = true;
+    if(mD != sD)
+        check = false;
+    for(int i = 0; i < N; i++)
+        if(mD != rows[i] || mD != cols[i])
+        {   check = false;
+            break;
+        }
+    if(check)
+        std::cout << "It's a magic square!!!" << std::endl;
+    else
+        std::cout << "It's not a magic square!" << std::endl;
+    for (int i = 0; i < N; i++){
+        free(arr[i]);
+    }
+    free(arr);
     return 0;
 }
