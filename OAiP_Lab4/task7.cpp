@@ -13,7 +13,7 @@ int main()
     while(true)
     {
         std::cin >> n;
-        if(std::cin.fail() || n < 1 || n != (long long)n || n != round(n))
+        if(std::cin.fail() || n < 1 || n != (int)n || n != round(n))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();

@@ -15,7 +15,7 @@ int main()
     while(true)
     {
         std::cin >> N >> M;
-        if(std::cin.fail() || (N || M) < 1 ||  (N || M) != (long long)(N || M) || (N || M) != round((N || M)))
+        if(std::cin.fail() || (N || M) < 1 ||  (N || M) != (int)(N || M) || (N || M) != round((N || M)))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -36,7 +36,7 @@ int main()
             while(true)
             {
                 std::cin >> arr[i][j];
-                if(std::cin.fail() ||  i != (long long)i || i!= round(i) || j != (long long)j || j!= round(j))
+                if(std::cin.fail() ||  i != (int)i || i!= round(i) || j != (int)j || j!= round(j))
                 {
                     std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
                     std::cin.clear();

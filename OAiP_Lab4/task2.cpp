@@ -1,4 +1,4 @@
-//Лабораторная 4, задача 2(1). Выполнена: Подвальников А.С.
+//Лабораторная 4, задача 2. Выполнена: Подвальников А.С.
 /*Инициализировать при объявлении статический двумерный массив
 целых чисел размером NxM.Определить количество положительных
 элементов,расположенных ниже побочной диагонали */
@@ -19,7 +19,7 @@ int main()
             while(true)
             {
                 std::cin >> arr[i][j];
-                if(std::cin.fail() ||  i != (long long)i || i!= round(i) || j != (long long)j || j!= round(j))
+                if(std::cin.fail() ||  i != (int)i || i!= round(i) || j != (int)j || j!= round(j))
                 {
                     std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
                     std::cin.clear();

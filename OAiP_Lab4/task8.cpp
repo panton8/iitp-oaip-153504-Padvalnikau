@@ -9,15 +9,17 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <time.h>
 
 int main()
 {
 int N = 0;
+srand(time(NULL));
 std::cout << "Enter size of array: " << std::endl;
 while(true)
 {
     std::cin >> N ;
-    if(std::cin.fail() || N < 1 || N != (long long)(N) || N!= round (N)){
+    if(std::cin.fail() || N < 1 || N != (int)(N) || N!= round (N)){
         std::cout << "Incorrect type of variable! Please,enter your value again: " << std::endl;
     std::cin.clear();
     std::cin.ignore(32000,'\n');
@@ -29,18 +31,7 @@ while(true)
 std::cout << "Enter terms of massive: " << std::endl;
     for(int i = 0; i < N ; i++)
     {
-            while(true)
-            {
-                std::cin >> arr[i];
-                if(std::cin.fail() ||  i != (long long)i || i!= round(i))
-                {
-                    std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
-                    std::cin.clear();
-                    std::cin.ignore(32000,'\n');
-                    continue;
-                }
-                break;
-            }
+            arr[i] = -1000 + rand() % 5000;
     }
     std::cout << "Your first array: " << std::endl;
     for(int i = 0; i < N ; i++)
@@ -53,10 +44,11 @@ std::cout << "Enter terms of massive: " << std::endl;
     int iMin = 0;
     for (int i = 0; i < N;i++)
     {
-            if (min_num > arr[i]) {
-                min_num = arr[i];
-                iMin  = i;
-            }
+        if (min_num > arr[i])
+        {
+            min_num = arr[i];
+            iMin  = i;
+        }
             if (max_num < arr[i]){
                 max_num = arr[i];
                 iMax = i;

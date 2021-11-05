@@ -12,12 +12,12 @@
 
 int main() {
     int N = 0,M = 0;
-    srand(time(NULL));
+    srand(time(nullptr));
     std::cout << "Enter size of array(NxM): " << std::endl;
     while(true)
     {
         std::cin >> N >> M;
-        if(std::cin.fail() || (N || M) < 1 ||  (N || M) != (long long)(N || M) || (N || M) != round((N || M)))
+        if(std::cin.fail() || (N || M) < 1 ||  (N || M) != (int)(N || M) || (N || M) != round((N || M)))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -27,21 +27,21 @@ int main() {
         break;
     }
     int **A = new int* [N];
-    for (int i = 1; i < N + 1; i++)
+    for (int i = 0; i < N ; i++)
     {
         A[i] = new int [M];
     }
-    for (int i = 1; i < N + 1; i++)
+    for (int i = 0; i < N ; i++)
     {
-        for (int j = 1; j < M + 1; j++)
+        for (int j = 0; j < M + 0; j++)
         {
-            A[i][j]= -10 + rand() % 25;
+            A[i][j]= 1 + rand() % 25;
         }
     }
     std::cout << "Array A: " << std::endl;
-    for (int i = 1; i < N + 1; i++)
+    for (int i = 0; i < N; i++)
     {
-        for (int j = 1; j < M + 1; j++)
+        for (int j = 0; j < M; j++)
         {
             std::cout << std::setw(3) << A[i][j] << " ";
         }
@@ -59,18 +59,18 @@ int main() {
             B[i][j] = A[i][j];
         }
     }
-    int max_num = A[1][1];
-    for(int i = 1; i < N + 1; i++){
-        for (int j = 1; j < M + 1; j++){
+    int max_num = A[0][0];
+    for(int i = 0; i < N; i++){
+        for (int j = 0; j < M; j++){
             if(max_num < A[i][j])
                 max_num = A[i][j];
             B[i][j] = max_num;
         }
     }
     std::cout << "Array B: " << std::endl;
-    for (int i = 1; i < N + 1; i++)
+    for (int i = 0; i < N; i++)
     {
-        for (int j = 1; j < M + 1; j++)
+        for (int j = 0; j < M; j++)
         {
             std::cout << std::setw(3) << B[i][j] << " ";
         }
@@ -80,7 +80,6 @@ int main() {
     {
         delete[]A[i];
         delete[]B[i];
-
     }
     delete[]A;
     delete[]B;

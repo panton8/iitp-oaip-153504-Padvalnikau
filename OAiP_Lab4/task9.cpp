@@ -12,12 +12,12 @@ int main()
 {
     //Enter parameters for A
     int N1 = 0, N2 = 0, M1 = 0, M2 = 0;
-    srand(time(NULL));
+    srand(time(nullptr));
     std::cout << "Enter size of array A: " << std::endl;
     while(true)
     {
         std::cin >> N1 >> M1;
-        if(std::cin.fail() || (N1 || M1) < 1 ||  (N1 || M1) != (long long)(N1 || M1) || (N1 || M1) != round((N1 || M1)))
+        if(std::cin.fail() || (N1 || M1) < 1 ||  (N1 || M1) != (int)(N1 || M1) || (N1 || M1) != round((N1 || M1)))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -54,9 +54,16 @@ int main()
     while(true)
     {
         std::cin >> N2 >> M2;
-        if(std::cin.fail() || (N2 || M2) < 1 ||  (N2 || M2) != (long long)(N2 || M2) || (N2 || M2) != round((N2 || M2)))
+        if(std::cin.fail() || (N2 || M2) < 1 ||  (N2 || M2) != (int)(N2 || M2) || (N2 || M2) != round((N2 || M2)))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        if(M1 != N2)
+        {
+            std::cout <<"Multiplication impossible! Try again : " << std::endl;
             std::cin.clear();
             std::cin.ignore(32000,'\n');
             continue;
@@ -77,25 +84,29 @@ int main()
         }
     }
     std::cout << "Array B: " << std::endl;
-    for (int i=0; i<N1; i++)
+    for (int i=0; i<N2; i++)
     {
-        for (int j=0; j< M1; j++)
+        for (int j=0; j< M2; j++)
         {
-            std::cout << std::setw(3) << A[i][j] << " ";
+            std::cout << std::setw(3) << B[i][j] << " ";
         }
         std::cout << std::endl;
     }
     // Create array C
-    int **C ;
-    C = (int **) malloc(N1 * sizeof(int *));
-    for (int i = 0; i < N1; i++) {
-        C[i] = (int *) malloc(M2 * sizeof(int));
-        //   Multiplication A and B
+    int** C = (int**)calloc(N1, sizeof(int*));
+    for (int i = 0; i < N1; i++)
+    {
+        C[i] = (int*)calloc(M2, sizeof(int));
+    }
+    for (int i = 0; i < N1; i++)
+    {
         for (int j = 0; j < M2; j++)
         {
             C[i][j] = 0;
-            for (int k = 0; k < M1; k++)
+            for (int k = 0; k < N1; k++)
+            {
                 C[i][j] += A[i][k] * B[k][j];
+            }
         }
     }
     // Output array C
@@ -103,13 +114,9 @@ int main()
     for (int i = 0; i < N1; i++)
     {
         for (int j = 0; j < M2; j++)
-            std::cout << C[i][j] << " ";
+            std::cout << std::setw(4) << C[i][j] << " ";
         std::cout << std::endl;
     }
-    for ( int i = 0; i < M2 ; i++) {
-        free(C[i]);
-    }
-    free(C);
     for ( int i = 0; i < M1 ; i++) {
         free(A[i]);
     }
@@ -118,5 +125,9 @@ int main()
         free(B[i]);
     }
     free(B);
+    for ( int i = 0; i < M2 ; i++) {
+        free(C[i]);
+    }
+    free(C);
     return 0;
 }

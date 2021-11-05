@@ -11,12 +11,12 @@ a[i] входов. Вычислите, сколько розеток получ�
 int main()
 {
     int  n, sum = 0;
-    srand(time(NULL));
+    srand(time(nullptr));
     std::cout << "Num of extension cords: " << std::endl;
         while(true)
         {
             std::cin >> n;
-            if(std::cin.fail() ||  n != (long long)n || n!= round(n))
+            if(std::cin.fail() ||  n != (int)n || n!= round(n))
             {
                 std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
                 std::cin.clear();

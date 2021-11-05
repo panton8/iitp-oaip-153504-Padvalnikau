@@ -1,4 +1,4 @@
-//Лабораторная 4, задача 3(1). Выполнена: Подвальников А.С.
+//Лабораторная 4, задача 3. Выполнена: Подвальников А.С.
 /*В вещесвенной матрице размером NxN найти максимальный и минимальный
 элементы.Переставить строки в которых они находятся,если они находятся
 в одной строке,выдать об этом сообщение.*/
@@ -14,7 +14,7 @@ int main()
     while(true)
     {
         std::cin >> N;
-        if(std::cin.fail() || N < 2 ||  N != (long long)N || N!= round(N))
+        if(std::cin.fail() || N < 2 ||  N != (int)N || N!= round(N))
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -36,7 +36,7 @@ int main()
             while(true)
             {
                 std::cin >> arr[i][j];
-                if(std::cin.fail() ||  i != (long long)i || i!= round(i) || j != (long long)j || j!= round(j))
+                if(std::cin.fail() ||  i != (int)i || i!= round(i) || j != (int)j || j!= round(j))
                 {
                     std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
                     std::cin.clear();
