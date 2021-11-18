@@ -7,6 +7,23 @@ ai = 0 переменной х присвоить значение 0,котор�
 
 #include <iostream>
 #include "static_lib.h"
+#include <cmath>
+
+int inputCheck(){
+    int x;
+    while(true){
+        std::cin >> x;
+        if(std::cin.fail() ||  x != (int)x || x != round(x))
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
+    }
+    return  x;
+}
 
 void arr(int* A, int* B, int count)
 {
@@ -18,17 +35,19 @@ void arr(int* A, int* B, int count)
 }
 int main()
 {
-    int n = 0;
+
     std::cout << "Enter size of arrays A and B: " << std::endl;
-    std::cin >> n;
+    int n = inputCheck();
     int *A = new int[n];
     int *B = new int[n];
     std::cout << "Enter elements of array A:" << std::endl;
-    for(int i = 0;i < n; i++)
-        std::cin >> A[i];
+    for(int i = 0;i < n; i++) {
+        A[i] = inputCheck();
+    }
     std::cout << "Enter elements of array B:" << std::endl;
-    for(int j = 0;j < n; j++)
-        std::cin >> B[j];
+    for(int j = 0;j < n; j++) {
+        B[j] = inputCheck();
+    }
     arr(A, B, n);
     delete[]A;
     delete[]B;
