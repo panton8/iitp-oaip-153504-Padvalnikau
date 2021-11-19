@@ -21,14 +21,6 @@ int inputCheck(){
     return  x;
 }
 
-long long g(long long n){
-    long long k = (n + 1) / 2;
-
-    if (n == 0) return 0;
-
-    return k * k + g(n / 2);
-}
-
 int f(int n){
     int k = (n+1)/2;
     if(!n)
