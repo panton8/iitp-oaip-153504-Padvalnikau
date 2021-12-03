@@ -9,7 +9,7 @@ unsigned  long long inputCheck(){
     while(true)
     {
         std::cin >> x;
-        if(std::cin.fail() ||  x != (unsigned  long long)x || x != round(x))
+        if(std::cin.fail() ||  x != (unsigned  long long)x || x == 0)
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -36,8 +36,6 @@ int main() {
     unsigned long long k = inputCheck();
     unsigned long long n = inputCheck();
     unsigned long long t = inputCheck();
-    if(!k && !n && !t)
-        return 1;
     unsigned long long m = pow(10, t);
     std::cout << "Result of the operation: " << f(k, n, m) << std::endl;
     return 0;
