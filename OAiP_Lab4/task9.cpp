@@ -117,17 +117,8 @@ int main()
             std::cout << std::setw(4) << C[i][j] << " ";
         std::cout << std::endl;
     }
-    for ( int i = 0; i < M1 ; i++) {
-        free(A[i]);
-    }
     free(A);
-    for ( int i = 0; i < M2 ; i++) {
-        free(B[i]);
-    }
     free(B);
-    for ( int i = 0; i < M2 ; i++) {
-        free(C[i]);
-    }
     free(C);
     return 0;
 }
