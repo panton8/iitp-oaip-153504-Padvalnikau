@@ -5,11 +5,11 @@
 #include <iostream>
 #include <cmath>
 
-int inputCheck(){
-    int x;
+long long inputCheck(){
+    long long x;
     while(true){
         std::cin >> x;
-        if(std::cin.fail() ||  x != (int)x || x != round(x))
+        if(std::cin.fail() ||  x != (int)x || x != round(x) || x < 0)
         {
             std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
             std::cin.clear();
@@ -22,7 +22,7 @@ int inputCheck(){
 }
 
 
-int F(int n)
+long long F(long long n)
 {
     if(!n)
         return  0;
@@ -32,10 +32,10 @@ int F(int n)
         return F(n/10);
 }
 
-int S(int p,int q)
+long long S(long long p,long long q)
 {
-    int res = 0;
-    for(int i = p; i <= q;i++)
+    long long res = 0;
+    for(long long i = p; i <= q;i++)
     {
         res += F(i);
     }
@@ -47,8 +47,6 @@ int main()
     std::cout << "Enter value of p and q(p <= q) : " << std::endl;
     int p = inputCheck();
     int q = inputCheck();
-    if( (p < 0) || (q < 0))
-        return 1;
     std::cout << S(p,q);
     return 0;
 }
