@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include <iostream>
 
-int F(int n)
+long long F(long long n)
 {
     if(!n)
         return  0;
@@ -11,10 +11,10 @@ int F(int n)
         return F(n/10);
 }
 
-int S(int p,int q)
+long long S(long long p,long long q)
 {
     int res = 0;
-    for(int i = p; i <= q;i++)
+    for(long long i = p; i <= q;i++)
     {
         res += F(i);
     }
@@ -38,5 +38,9 @@ TEST(func_test1,test3){
 
 TEST(func_test1,test4){
     EXPECT_EQ(NULL, S(-1,-1));
+    EXPECT_TRUE(true);
+}
+TEST(func_test1,test5){
+    EXPECT_EQ(7, S(INT32_MAX,INT32_MAX));
     EXPECT_TRUE(true);
 }

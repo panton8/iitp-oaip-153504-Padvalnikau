@@ -11,7 +11,6 @@ unsigned long long f(unsigned long long n,unsigned long long r, unsigned long lo
 }
 
 TEST(func2_test,test1){
-    unsigned long long a = f(1234,1234,10000);
     EXPECT_EQ(736, f(1234,1234,pow(10,4)));
     EXPECT_TRUE(true);
 }
