@@ -5,8 +5,8 @@
 #include <iostream>
 #include <cmath>
 
-int inputCheck(){
-    int x;
+long long inputCheck(){
+    long long x;
     while(true){
         std::cin >> x;
         if(std::cin.fail() ||  x != int(x) || x != round(x))
@@ -21,8 +21,8 @@ int inputCheck(){
     return  x;
 }
 
-int f(int n){
-    int k = (n+1)/2;
+long long  f(long long n){
+    long long k = (n+1)/2;
     if(!n)
         return 0;
     return  k * k + f(n / 2);
@@ -30,7 +30,7 @@ int f(int n){
 
 int main(){
     std::cout << "Enter the parameter: " << std::endl;
-    int n = inputCheck();
+    long long n = inputCheck();
     std::cout << f(n);
     return 0;
 }
