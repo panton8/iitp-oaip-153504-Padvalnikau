@@ -21,6 +21,7 @@ int Input() {
         std::cout << "Enter correct value" << std::endl;
     }
 }
+
 char InputSymbol() {
     char ch;
 
@@ -36,6 +37,7 @@ char InputSymbol() {
         std::cout << "Enter correct value" << std::endl;
     }
 }
+
 char TopBombs(char** arr, int rowSize, int colSize) {
     int counter = 0;
     for (int i = rowSize; i < rowSize + 2; i++)
@@ -51,6 +53,7 @@ char TopBombs(char** arr, int rowSize, int colSize) {
     else
         return '.';
 }
+
 char OtherBombs(char** arr,int rowSize,int colSize) {
     int counter = 0;
     for (int i = rowSize; i <rowSize + 3; i++)
@@ -100,8 +103,9 @@ char CentralBombs(char** arr, int rowSize,int colSize) {
 }
 
 int main() {
+    std::cout << "Enter size of the field: " << std::endl;
     int N = Input(), M = Input(), counter = 0;
-
+    std::cout << "Fill the field with '*' and '.': " << std::endl;
     char** Field = (char**)malloc(N*sizeof(char));
 
     for (int i = 0; i < N; i++)
