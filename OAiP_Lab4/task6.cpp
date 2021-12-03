@@ -76,7 +76,7 @@ int main() {
         }
         std::cout << std::endl;
     }
-    for(int i = 0 ;i < M; i++)
+    for(int i = 0 ;i < N; i++)
     {
         delete[]A[i];
         delete[]B[i];
