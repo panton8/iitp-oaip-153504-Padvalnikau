@@ -5,6 +5,22 @@
 #include <iostream>
 #include <cstring>
 
+int inputCheck(){
+    int x;
+    while(true){
+        std::cin >> x;
+        if(std::cin.fail() ||  x != (int)x)
+        {
+            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cin.clear();
+            std::cin.ignore(32000,'\n');
+            continue;
+        }
+        break;
+    }
+    return  x;
+}
+
 int numWord(char* str)
 {
     int space = 0;
@@ -33,7 +49,7 @@ int main()
     std::cout << "Enter the telegram: " << std::endl;
     gets(str);
     std::cout << "Enter cost of one word: " << std::endl;
-    std::cin >> sum;
+    sum = inputCheck();
     int bill = numWord(str) * sum;
     std::cout << str << std::endl;
     std::cout << "The bill for telegram: " << bill << std::endl;
