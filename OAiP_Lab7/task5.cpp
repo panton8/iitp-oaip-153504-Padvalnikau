@@ -1,12 +1,14 @@
+//Лабораторная 7, задача 5. Выполнена: Подвальников А.С.
+/*Перевести число из арабской системы записи чисел в римскую.*/
 #include <iostream>
 
 int inputCheck(){
     int x;
     while(true){
         std::cin >> x;
-        if(std::cin.fail() ||  x != (int)x || x < 0)
+        if(std::cin.fail() ||  x != (int)x || x < 1)
         {
-            std::cout <<"Incorrect type of variable! Please,enter your value again: " << std::endl;
+            std::cout <<"Incorrect input! Please,enter your value again: " << std::endl;
             std::cin.clear();
             std::cin.ignore(32000,'\n');
             continue;
@@ -38,6 +40,6 @@ int main(){
     int ar_num;
     std::cout << "Enter the num: " << std::endl;
     ar_num = inputCheck();
-    std::cout <<arabicToRoman(ar_num);
+    std::cout << arabicToRoman(ar_num);
     return 0;
 }
