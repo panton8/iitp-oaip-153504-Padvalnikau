@@ -306,7 +306,79 @@ long long interesting(long long num){
     return (num+1)/10;
 }
 
+//////////
+/////////
 
+std::string Sum(std::string str1, std::string str2,int size) {
+    std::string Sum;
+    int new_digit = 0;
+    int temp = 0;
+    for (int i = size - 1; i >= 0; i--) {
+        if (str1[i] == 'a')
+            temp += 10;
+        else if(str1[i] == 'b')
+            temp += 11;
+        else
+            temp = str1[i] - '0';
+        if (str2[i] == 'a')
+            temp += 10;
+        else if(str2[i] == 'b')
+            temp += 11;
+        else
+            temp += str2[i] - '0';
+        temp += new_digit;
+        new_digit = 0;
+        if (temp - 12 == 10) {
+            Sum += 'a';
+        }
+        else if( temp - 12 == 11)
+            Sum += 'b';
+        else if (temp > 10) {
+            new_digit += 1;
+            Sum += (char)temp - 12 + '0';
+        }
+        else if (temp < 10) {
+            Sum += (char)temp + '0';
+        }
+        temp = 0;
+    }
+    Sum = reverse(Sum,size);
+    return Sum;
+}
+std::string diff(std::string str1, std::string str2, int size) {
+    std::string diff = "";
+    int cu = 0;
+    int temp = 0;
+    for (int i = size - 1; i >= 0; i--) {
+        if (str1[i] == 'a')
+            temp += 10;
+        else if(str1[i] == 'b')
+            temp += 11;
+        else
+            temp = str1[i] - '0';
+        if (str2[i] == 'a')
+            temp -= 10;
+        else if(str2[i] == 'b')
+            temp -= 11;
+        else
+            temp -= str2[i] - '0';
+        temp += cu;
+        cu = 0;
+        if (str1[i] < 0) {
+            temp += 12;
+            cu -= 1;
+        }
+        diff += (temp + '0');
+        temp = 0;
+    }
+    for(int i = 0; i < size; i++){
+        if(diff[i] == '/') {
+            diff.replace(i,1,"bb");
+        }
+    }
+    diff = reverse(diff,size);
+    return diff;
+}
 TEST(task9, test1) {
 int digit = 6;
 string Digit;
@@ -504,5 +576,16 @@ EXPECT_TRUE(true);
 TEST(task6,test6){
 int num = 619;
 EXPECT_EQ(62, interesting(num));
+EXPECT_TRUE(true);
+}
+
+
+TEST(task4,test1){
+EXPECT_EQ("bb25", diff("125","200",3));
+EXPECT_TRUE(true);
+}
+
+TEST(task4,test2){
+EXPECT_EQ("bb42", diff("289","347",3));
 EXPECT_TRUE(true);
 }
