@@ -1,5 +1,13 @@
+//Лабораторная 7, задача 10. Выполнена: Подвальников А.С.
+/*Патриций решил устроить праздник и для этого приготовил 240
+бочек вина. Однако к нему пробрался недоброжелатель, который подсыпал
+яд в одну из бочек. Недоброжелателя тут же поймали, дальнейшая его судьба
+неизвестна. Про яд известно, что человек, который его выпил, умирает в
+течение 24 часов. До праздника осталось два дня, то есть 48 часов. У
+патриция есть пять рабов, которыми он готов пожертвовать, чтобы узнать, в
+какой именно бочке яд. Каким образом можно это узнать?*/
+
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 
 
@@ -28,7 +36,6 @@ std::string system3(int k){
 }
 
 int main() {
-    int time = 48;
     std::string barrels[240];
     std::string slave1[50];
     std::string slave2[50];
@@ -58,25 +65,25 @@ int main() {
     int left_slaves = 0;
     std::cout << "Enter num of left slaves after first check: " << std::endl;
     std::cin >> left_slaves;
-    std::cout << "First check is completed." << std::endl << "Slaves left: " << left_slaves << "" << std::endl
-              << "The number of options for the number of the poisoned barrel: " << pow(2, left_slaves) << std::endl
-              << "Time left: " << time - 24 << " hours" << std::endl;
+
     switch(left_slaves){
         case 5:
-            std::cout << "Second check is completed.Poison in 1 of 6 barrels that a slave will drink and poison";
+            std::cout << "Least number of discarded barrels: 6";
             break;
         case 4:
-            std::cout << "Second check is completed.Poison in 1 of 4 barrels that a slave will drink and poison";
+            std::cout << "Least number of discarded barrels: 4";
             break;
         case 3:
-                std::cout << "Second check is completed.Poison in (1 of 3) or (1 of 2) barrels that a slave will drink and poison";
+                std::cout << "Least number of discarded barrels: 2 or 3";
                 break;
         case 2:
-                std::cout << "Second check is completed.Poison in 1 of 2 barrels that a slave will drink and poison";
+                std::cout << "Least number of discarded barrels: 2";
                 break;
         case 1:
-                std::cout << "Second check is completed.Poison in 1 of 2  barrels that a slave will drink and poison";
+                std::cout << "Least number of discarded barrels: 2";
                 break;
+        default:
+            std::cout << "Num of left slaves incorrect!";
     }
     return 0;
 }
