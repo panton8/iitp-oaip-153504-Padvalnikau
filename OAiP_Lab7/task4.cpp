@@ -6,139 +6,141 @@
 операции сложения и функции для выполнения операции вычитания.
 Предусмотреть ввод положительных и отрицательных чисел.*/
 #include <iostream>
+using namespace std;
 
-std::string reverse(std::string str, int size) {
-    if (size == -1)
-        return "";
-    else
-    {
-        char a;
-        a = str[size];
-        return a + reverse(str, size - 1);
+bool minus1, minus2;
+
+string convert_letter(char number) {
+    string temp = "";
+    switch (number) {
+        case 'a': temp = "10"; break;
+        case 'b': temp = "11"; break;
+        default: temp = number;
     }
+    return temp;
+}
+string convert_number(short letter) {
+    string temp = "";
+    switch (letter) {
+        case 10: temp = "a"; break;
+        case 11: temp = "b"; break;
+        default: temp = to_string(letter);
+    }
+    return temp;
 }
 
-std::string sum(std::string str1, std::string str2,int size) {
-    std::string sum;
-    int new_digit = 0;
-    int temp = 0;
-    for (int i = size - 1; i >= 0; i--) {
-        if (str1[i] == 'a')
-            temp += 10;
-        else if(str1[i] == 'b')
-            temp += 11;
-        else
-            temp = str1[i] - '0';
-        if (str2[i] == 'a')
-            temp += 10;
-        else if(str2[i] == 'b')
-            temp += 11;
-        else
-            temp += str2[i] - '0';
-        temp += new_digit;
-        new_digit = 0;
-        if (temp - 12 == 10) {
-            sum += 'a';
+void Sum(string a, string b, string sum, short i) {
+    string temp_a = convert_letter(a[i]); string temp_b = convert_letter(b[i]);
+    short temp_sum = atoi(temp_a.c_str()) + atoi(temp_b.c_str());
+    if (temp_sum > 11) { temp_sum = temp_sum - 12;
+        string temp = convert_number(temp_sum); sum[i] = temp[0];
+        if (i == 0) {
+            string newsum; newsum.resize(sum.length() + 1);
+            newsum[0] = '1';
+            for (short j = 0, k = 1; j < sum.length(); ++j, ++k) newsum[k] = sum[j];
+            cout << newsum; return;
         }
-        else if( temp - 12 == 11)
-            sum += 'b';
-        else if (temp > 10) {
-            new_digit += 1;
-            sum += (char)temp - 12 + '0';
-        }
-        else if (temp < 10) {
-            sum += (char)temp + '0';
-        }
-        temp = 0;
+        string new_a = convert_letter(a[i - 1]);
+        short NEW = atoi(new_a.c_str()) + 1; string A = convert_number(NEW);
+        a[i - 1] = A[0];
     }
-    for(int i = 0; i < size; i++){
-        if(sum[i] == '/') {
-            sum.replace(i,1,"b");
-        }
-    }
-    sum = reverse(sum,size);
-    return sum;
-}
-std::string diff(std::string str1, std::string str2, int size) {
-    std::string diff = "";
-    int cu = 0;
-    int temp = 0;
-    for (int i = size - 1; i >= 0; i--) {
-        if (str1[i] == 'a')
-            temp += 10;
-        else if(str1[i] == 'b')
-            temp += 11;
-        else
-            temp = str1[i] - '0';
-        if (str2[i] == 'a')
-            temp -= 10;
-        else if(str2[i] == 'b')
-            temp -= 11;
-        else
-            temp -= str2[i] - '0';
-        temp += cu;
-        cu = 0;
-        if (str1[i] < 0) {
-            temp += 12;
-            cu -= 1;
-        }
-        diff += (temp + '0');
-        temp = 0;
-    }
-    for(int i = 0; i < size; i++){
-        if(diff[i] == '/') {
-            diff.replace(i,1,"bb");
-        }
-        if(diff[i] == '*' && diff[i+1] == '*')
-            diff.replace(i-1,2,"55");
-    }
-    for(int i = 0; i < size; i++){
-
-        if(diff[i] == '*' )
-            diff.replace(i,1,"b");
-    }
-    diff = reverse(diff,size);
-    return diff;
+    else { string temp = convert_number(temp_sum); sum[i] = temp[0]; }
+    if (i == 0) { cout << sum; return; }
+    Sum(a, b, sum, --i);
 }
 
-int main(){
-    std::string str1;
-    std::string str2;
-    std::cout << "Enter nums in system12: " << std::endl;
-    std::cin >> str1 ;
-    int size1 = 0, size2 = 0;
+void diff(string a, string b, string sum, short i) {
+    string temp_a = convert_letter(a[i]); string temp_b = convert_letter(b[i]);
+    short temp_notsum = atoi(temp_a.c_str()) - atoi(temp_b.c_str());
 
-    for (int i = 0; str1[i] != '\0'; i++) {
-        size1++;
-        if ((str1[i] > '9' || str1[i] < '0') && (str1[i] != 'a')) {
-            std::cout << "Введённого числа не существует в одиннадцатеричной системе счисления\n";
-            return 1;
-        }
-    }
-    std::cin >> str2;
-    for (int i = 0; str2[i] != '\0'; i++) {
-        size2++;
-        if ((str2[i] > '9' || str2[i] < '0') && (str2[i] != 'a')) {
-            std::cout << "Введённого числа не существует в одиннадцатеричной системе счисления\n";
-            return 1;
-        }
-    }
+    if (temp_notsum < 0) {
 
-    if(size1 < size2) {
-        for (size1 = size1; size2 - size1 > 0; size1++) {
-            str1 = "0" + str1;
+        string ty = convert_letter(a[i]);
+        short y = atoi(ty.c_str()) + 11;
+        string tx = convert_letter(b[i]);
+        short x = atoi(tx.c_str());
+        short div = y - x; string tempagain = to_string(div); sum[i] = tempagain[0];
+
+        if (i == 0) {
+            string newsum; newsum.resize(sum.length() + 1);
+            newsum[0] = 'b';
+            for (short j = 0, k = 1; j < sum.length(); ++j, ++k) newsum[k] = sum[j];
+            cout << newsum; return;
         }
-    }
-    else if(size1 > size2){
-        for (size2 = size2 ; size1 - size2 > 0; size2++) {
-            str2 = "0" + str2;
-        }
+
+        string new_a = convert_letter(a[i - 1]);
+        short NEW = atoi(new_a.c_str()) - 1;
+        if (NEW < 0) NEW += 12;
+        string A = convert_number(NEW);
+        a[i - 1] = A[0];
     }
 
-    std::cout << "The result of adding two numbers: ";
-    std::cout << sum(str1,str2,size1);
-    std::cout << std::endl;
-    std::cout << "The result of subtracting two numbers: ";
-    std::cout << diff(str1,str2,size2);
+    else { string temp = convert_number(temp_notsum); sum[i] = temp[0]; }
+    if (i == 0) { cout << sum; return; }
+    diff(a, b, sum, --i);
+}
+
+int main() {
+    string a, b, sum;
+    cin >> a >> b;
+    short size_a = a.length(), size_b = b.length();
+    if (a[0] == '-') {
+        minus1 = 1;
+        string temp;
+        temp.resize(a.length() - 1);
+        for (short i = 1, k = 0; i < a.length(); ++i, ++k) temp[k] = a[i];
+        a.resize(temp.length());
+        a = temp;
+        size_a = a.length();
+    }
+    if (b[0] == '-') {
+        minus2 = 1;
+        string temp;
+        temp.resize(b.length() - 1);
+        for (short i = 1, k = 0; i < b.length(); ++i, ++k) temp[k] = b[i];
+        b.resize(temp.length());
+        b = temp;
+        size_b = b.length();
+    }
+    short size = size_a > size_b ? size_a : size_b;
+    if (size_a < size) {
+        string temp = a;
+        short j = 0;
+        a.resize(size);
+        for (short i = 0; i < size; ++i) a[i] = '0';
+        for (short i = temp.length() - 1; i >= 0; --i, ++j) a[size - j - 1] = temp[i];
+    }
+    if (size_b < size) {
+        string temp = b;
+        short j = 0;
+        b.resize(size);
+        for (short i = 0; i < size; ++i) b[i] = '0';
+        for (short i = temp.length() - 1; i >= 0; --i, ++j) b[size - j - 1] = temp[i];
+    }
+    sum.resize(size, '0');
+    if (minus1 && minus2) {
+        cout << a << " + " << b << " = ";
+        putchar('-');
+        Sum(a, b, sum, size);
+        cout << endl;
+        cout << a << " - " << b << " = ";
+        diff(a, b, sum, size);
+    }
+    if ((minus1 && !minus2) || (minus2 && !minus1)) {
+        cout << a << " + " << b << " = ";
+        diff(a, b, sum, size);
+        cout << a << " - " << b << " = ";
+        cout << endl;
+        Sum(a, b, sum, size);
+        cout << endl;
+    }
+    if (!minus1 && !minus2) {
+        cout << a << " + " << b << " = ";
+        Sum(a, b, sum, size);
+        std::cout << std::endl;
+        cout << a << " - " << b << " = ";
+        diff(a, b, sum, size);
+        cout << endl;
+    }
     return 0;
 }
