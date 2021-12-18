@@ -12,7 +12,6 @@
 как 22 = 2 x 9 + 1 x 3 + 1.*/
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 bool negative;
