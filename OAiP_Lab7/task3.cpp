@@ -1,91 +1,138 @@
+//Лабораторная 7, задача 3. Выполнена: Подвальников А.С.
+/*Найдите сумму двоичных чисел, заданных в естественной
+форме. Сложение выполните в дополнительном коде. Ответ
+выразите в прямом коде.Разработать функции для выполнения
+операции сложения. Предусмотреть ввод положительных и
+отрицательных чисел.*/
 #include <iostream>
+#include <cmath>
 
-std::string reverse(std::string str, int size) {
-    if (size == -1)
-        return "";
-    else
-    {
-        char a;
-        a = str[size];
-        return a + reverse(str, size - 1);
+void dop(long long num1, long long num2) {
+    std::string str1,str2;
+    if (num1 > 0)
+        str1 = "00000000000000000000000000000000";
+    else if(num1 <= 0)
+        str1 = "10000000000000000000000000000000";
+    int k = abs(num1);
+    for (int i = 31; i > 0; i--) {
+        str1[i] = k % 2 + '0';
+        k /= 2;
     }
-}
+    if (num2 > 0)
+        str2 = "00000000000000000000000000000000";
+    else if (num2 <= 0)
+        str2 = "10000000000000000000000000000000";
+    k = abs(num2);
+    for (int i = 31; i > 0; i--) {
+        str2[i] = k % 2 + '0';
+        k /= 2;
+    }
+    if (num1 < 0) { // дополнительный код
+        for (int i = 1; i < 32; i++) {
+            if (str1[i] == '1')
+                str1[i] = '0';
+            else
+                str1[i] = '1';
+        }
+        int cu = 1, temp;
+        for (int i = 31; i >= 0; i--) {
+            temp = str1[i] ^ cu;
+            cu = str1[i] & cu;
+            str1[i] = temp;
+        }
+    }
+    if (num2 < 0) {
+        for (int i = 1; i < 32; i++) {
+            if (str2[i] == '1')
+                str2[i] = '0';
+            else
+                str2[i] = '1';
+        }
+        int cu = 1,temp;
+        for (int i = 31; i >= 0; i--) {
+            temp = str2[i] ^ cu;
+            cu = str2[i] & cu;
+            str2[i] = temp;
+        }
 
-std::string additionalCode(std::string str){
-    std::string additional_code;
-    int a = 0;
-    for(int i = 0; i < 8; i++) {
-        if(str[0] == '-'){
-            a = 8;
-        }
-        if(i == 0 && a == 8)
-        {
-            additional_code += '1';
-        }
-        if(a == 8 && i > 0){
-            if(str[i] == '1') additional_code += '0';
-            if(str[i] == '0') additional_code += '1';
-        }
-        else if (!a){
-            if (str[i] == '0')
-                additional_code += '0';
-            else if (str[i] == '1')
-                additional_code += '1';
-        }
     }
-    int size = 0;
-    for(int i = 0; additional_code[i] != '\0';i++)
-        size++;
-    additional_code = reverse(additional_code,size);
-    for(int i = 0; i < 8; i++){
-        if(a == 8 &&  i > size-1 ){
-            additional_code += '1';
-        }
-        if( !a && i > size-1)
-            additional_code += '0';
+    int* Ai = new int[32];
+    int* Bi = new int[32];
+    for (int i = 0; i < 32; i++) {
+        Ai[i] = str1[i] - '0';
+        Bi[i] = str2[i] - '0';
     }
-    additional_code = reverse(additional_code,8);
-    for(int i = 7; i >= 0; i--){
-        if(a == 8){
-            if(additional_code[i] == '0') {
-                additional_code[i] = '1';
-                break;
+    if(num1 < 0 && num2 < 0){
+        int cu = 0;
+        for (int i = 31; i >= 0; i--) {
+            Ai[i] += cu;
+            if (Ai[i] == 2) {
+                Ai[i] = 0;
+                cu = 1;
             }
-            if(additional_code[i] == '1')
-                additional_code[i] = '0';
+            else
+                cu = 0;
+            Ai[i] += Bi[i];
+            if (Ai[i] == 2) {
+                Ai[i] = 0;
+                cu = 1;
+            }
+        }
+        int temp;
+        for (int i = 1; i < 32; i++) { // инверсия
+            if (Ai[i] == 1)
+                Ai[i] = 0;
+            else
+                Ai[i] = 1;
+        }
+        if (cu == 1) {
+            for (int i = 31; i >= 0; i--) {
+                Ai[i] += cu;
+                if (Ai[i] > 1) {
+                    Ai[i] = 0;
+                    cu = 1;
+                }
+                else
+                    cu = 0;
+            }
         }
     }
-    return additional_code;
-}
-
-std::string sumInAddCode(std::string str1,std::string str2){
-    std::string  add_sum;
-    for(int i = 7; i >= 0; i--){
-        if (str1[i] != str2[i]){
-            add_sum += '1';
-        }
-        else if(str1[i] == str2[i] == 0) {
-            add_sum += '0';
-        }
-        else if(str1[i] == str2[i] == 1) {
-            add_sum += '0';
-            if(str1[i-1] != '1') str1[i - 1] = '1';
-            else if(str1[i-1] == '1') str2[i-1] = '1';
+    else {
+        int cu = 0;
+        for (int i = 31; i >= 0; i--) {
+            Ai[i] += cu;
+            if (Ai[i] == 2) {
+                Ai[i] = 0;
+                cu = 1;
+            }
+            else
+                cu = 0;
+            Ai[i] += Bi[i];
+            if (Ai[i] == 2) {
+                Ai[i] = 0;
+                cu = 1;
+            }
         }
     }
-    add_sum = reverse(add_sum,8);
-    return add_sum;
+    for (int i = 0; i < 32; i++)
+        std::cout << Ai[i];
 }
 
-int main(){
-    std::string str21 , str22;
-    std::cout << "Enter the nums in binary: " << std::endl;
-    std::cin >> str21 >> str22;
-    std::string add_code1 = additionalCode(str21);
-    std::string add_code2 = additionalCode(str22);
-    std::string add_code_sum = sumInAddCode(add_code1,add_code2);
-    std::cout << add_code1 << std::endl;
-    std::cout << add_code2 << std::endl;
-    std::cout << add_code_sum << std::endl;
+int main() {
+
+    long long num1, num2;
+    std::cout << "Enter the num1 in binary notation: " << std::endl;
+    while (!(std::cin >> num1)) {
+        std::cout << "Incorrect ";
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+    }
+    std::cout << "Enter num2 in binary notation" << std::endl;
+    while (!(std::cin >> num2)) {
+        std::cout << "Incorrect value!Repeat again:";
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+    }
+    dop(num1,num2);
     return 0;
 }
