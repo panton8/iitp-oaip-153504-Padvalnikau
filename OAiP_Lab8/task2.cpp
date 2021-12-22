@@ -1,5 +1,20 @@
+//Лабораторная 8, задача 2. Выполнена: Подвальников А.С.
+/*Разработать программу,реализующую работу с файлами в консольном приложении.
+Информация, обрабатываемая программой, должна хранитьсяв файле, результат работы
+занести в другой файл и отобразить на экране.Использовать динамический массив структур,
+содержащий поля согласно варианту индивидуального задания. Выделение памяти реализовать через
+calloc.Программа должна содержать необходимые комментарии.Следует предусмотреть простейший вывод
+на экран входных и выходных данных. В каждом варианте задания реализовать следующие функции для
+работы со структурой: инициализации данных, добавления,удаления, корректировки и просмотра записей файла.
+1. На междугородной АТС информация о разговорах содержит
+дату разговора, код и название города, время разговора, тариф, номер
+телефона в этом городе и номер телефона абонента. Вывести по каждому
+городу общее время разговоров с ним и сумму.
+*/
+
 #include <iostream>
 #include <fstream>
+#include <string.h>
 
 using namespace std;
 
@@ -44,28 +59,30 @@ void showStruct(PhoneInfo* obj,int n)
     }
 }
 
-void fileUsing(PhoneInfo* obj, int n)
-{
+void fileUsing(PhoneInfo* obj, int n) {
     ofstream output;
     output.open("D:/bsuir/OAiP/OAiP_Lab8/res.txt");
-    if(!output.is_open())
+    if (!output.is_open())
         printf("File open error\n");
+    char city[30];
+    printf("Enter the CityName for calculating result:");
+    scanf("%s", city);
     string str1 = "City: ";
     string str2 = "TotalTime: ";
     string str3 = "Sum: ";
     string str4 = "*********************";
-    int totalTime = 0, time = 0, tariff = 0, sum = 0;
-    for (int i = 0; i < n; i++) {
-        time = obj[i].talkTime;
-        tariff = obj[i].tariff;
-        sum += (time / 60.0) * tariff;
-        totalTime += time;
-        output << str1 << obj[i].city << endl;
+    int totalTime = 0, sum = 0;
+    for(int i = 0; i < n; i++) {
+        if (!strcmp(city, obj[i].city)) {
+            sum += (obj[i].talkTime/60.0) * obj[i].tariff;
+            totalTime += obj[i].talkTime;
+        }
+    }
+        output << str1 << city << endl;
         output << str2 << totalTime << endl;
         output << str3 << sum << endl;
         output << str4 << endl;
-    }
-    output.close();
+        output.close();
 }
 
 void insertSort(PhoneInfo* arr, int n)
@@ -139,6 +156,12 @@ void setStruct(PhoneInfo* obj, int &OldSize, int NewSize) {
                 cin.ignore(10000, '\n');
             }
             OldSize = NewSize;
+            for(int i = 0; i < NewSize; i++){
+                for(int j = 0; j < NewSize; j++)
+                if(obj[i].city == obj[j].city)
+                    obj[i].talkTime += obj[j].talkTime;
+
+            }
         }
     }
     else if (index == 2) {
