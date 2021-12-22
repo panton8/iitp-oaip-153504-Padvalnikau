@@ -10,9 +10,9 @@ Research Center), где изучают и стро€т много различных любопытных
 —начала Ѕрюс хочет создать список двудес€тичны  х чисел. ѕомогите
 ему найти n-ое наименьшее двудес€тичное число.*/
 
- #include <iostream>
+#include <iostream>
 #include <cmath>
-using namespace std;
+using namespace  std;
 
 void to_binary(int a, string& s) {
 	int mx = 0;
@@ -30,7 +30,9 @@ void to_binary(int a, string& s) {
 
 int main() {
 
-	short ourDigit = 0, num; cin >> num;
+	short ourDigit = 0, num;
+    std::cout << "Enter the num: " << std::endl;
+    cin >> num;
 
 	string a = "10", b = "8", c = "1", d = "100", e = "1000";
 
