@@ -25,6 +25,7 @@
 В магазине сформирован список постоянных клиентов, который включает
 ФИО, домашний адрес покупателя и размер предоставляемой скидки. Вывести
 всех покупателей, имеющих 5 % скидку (сортировка вставкой по возрастанию).*/
+
 #include <iostream>
 
 using namespace std;
@@ -155,6 +156,7 @@ void searchData(client_base* obj, int NewSize) {
         cout << "Result of research:\n";
         for (int i = 0; i < NewSize; i++)
         {
+            if (obj[i].lastname == k)
             printf("Costumer %d : \n",i + 1);
             printf("FIO: %s  %s  %s \n", obj[i].lastname, obj[i].firstname, obj[i].middlename);
             printf("Address: %s \n", obj[i].address);
@@ -169,6 +171,7 @@ void searchData(client_base* obj, int NewSize) {
         cout << "Result of research:\n";
         for (int i = 0; i < NewSize; i++)
         {
+            if (obj[i].firstname == k)
             printf("Costumer %d : \n",i + 1);
             printf("FIO: %s  %s  %s \n", obj[i].lastname, obj[i].firstname, obj[i].middlename);
             printf("Address: %s \n", obj[i].address);
@@ -183,6 +186,7 @@ void searchData(client_base* obj, int NewSize) {
         cout << "Result of research:\n";
         for (int i = 0; i < NewSize; i++)
         {
+            if (obj[i].middlename == k)
             printf("Costumer %d : \n",i + 1);
             printf("FIO: %s  %s  %s \n", obj[i].lastname, obj[i].firstname, obj[i].middlename);
             printf("Address: %s \n", obj[i].address);
@@ -197,6 +201,7 @@ void searchData(client_base* obj, int NewSize) {
         cout << "Result of research:\n";
         for (int i = 0; i < NewSize; i++)
         {
+            if (obj[i].address == k)
             printf("Costumer %d : \n",i + 1);
             printf("FIO: %s  %s  %s \n", obj[i].lastname, obj[i].firstname, obj[i].middlename);
             printf("Address: %s \n", obj[i].address);
@@ -211,6 +216,7 @@ void searchData(client_base* obj, int NewSize) {
         cout << "Result of research:\n";
         for (int i = 0; i < NewSize; i++)
         {
+            if (obj[i].sale == k)
             printf("Costumer %d : \n",i + 1);
             printf("FIO: %s  %s  %s \n", obj[i].lastname, obj[i].firstname, obj[i].middlename);
             printf("Address: %s \n", obj[i].address);
@@ -219,6 +225,7 @@ void searchData(client_base* obj, int NewSize) {
         }
     }
 }
+
 client_base* delStruct(client_base* Obj, int &Size) {
     int k;
     cout << "1 - delete struct\n 2 - Change struct\n";
