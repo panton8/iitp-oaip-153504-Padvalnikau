@@ -5,7 +5,6 @@
 операции сложени€. ѕредусмотреть ввод положительных и
 отрицательных чисел.*/
 #include <iostream>
-#include <cmath>
 
 void dop(long long num1, long long num2) {
     std::string str1,str2;
@@ -27,7 +26,7 @@ void dop(long long num1, long long num2) {
         str2[i] = k % 2 + '0';
         k /= 2;
     }
-    if (num1 < 0) { // дополнительный код
+    if (num1 < 0) {
         for (int i = 1; i < 32; i++) {
             if (str1[i] == '1')
                 str1[i] = '0';
@@ -78,8 +77,7 @@ void dop(long long num1, long long num2) {
                 cu = 1;
             }
         }
-        int temp;
-        for (int i = 1; i < 32; i++) { // инверси€
+        for (int i = 1; i < 32; i++) {
             if (Ai[i] == 1)
                 Ai[i] = 0;
             else
@@ -123,7 +121,7 @@ int main() {
     long long num1, num2;
     std::cout << "Enter the num1 in binary notation: " << std::endl;
     while (!(std::cin >> num1)) {
-        std::cout << "Incorrect ";
+        std::cout << "Incorrect value!Repeat again:";
         std::cin.clear();
         std::cin.ignore(10000, '\n');
     }
