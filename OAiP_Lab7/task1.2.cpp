@@ -6,45 +6,6 @@
 #include <iostream>
 #include <cmath>
 
-/*void system12(int num,int size){
-    int num1 = 0;
-    for (int i = 0; i < size; i++)
-    {
-        num1 += (num % 10) * pow(7, i);
-        num /= 10;
-    }
-    int rem;
-    for (int i = 0; i < size-1; i++)
-    {
-        rem = num1 % 12;
-        num1 = (num1 - rem) / 12;
-        if (rem == 10)
-            std::cout << 'a';
-        else
-            std::cout << rem;
-    }
-    if (num1 == 10)
-        std::cout << 'a';
-    else
-        std::cout << num1;
-}
-
-int main()
-{
-    int num;
-    std::cout << "Enter the num: " << std::endl;
-    std::cin >> num;
-    int temp_num = num;
-    int size1 = 1;
-    while (temp_num >= 10){
-        temp_num /= 10;
-        size1++;
-    }
-    system12(num,size1);
-    return 0;
-}*/
-
-
 void from10To12(int notation10)
 {
     if (notation10 > 12)
