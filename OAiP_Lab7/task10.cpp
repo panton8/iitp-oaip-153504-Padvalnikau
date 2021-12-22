@@ -8,8 +8,6 @@
 какой именно бочке яд. Каким образом можно это узнать?*/
 
 #include <iostream>
-#include <cmath>
-
 
 std::string reverse(std::string str, int size) {
     if (size == -1)
@@ -62,8 +60,11 @@ int main() {
            barrels[i][5] != '0')
             left[r++] = barrels[i];
     }
+    int num_barrel = 0;
     int left_slaves = 0;
-    std::cout << "Enter num of left slaves after first check: " << std::endl;
+    std::cout << "Enter num of barrel: " << std::endl;
+    std::cin >> num_barrel;
+    std::cout << "Enter num of left slaves after first check(1-5): " << std::endl;
     std::cin >> left_slaves;
 
     switch(left_slaves){
@@ -85,5 +86,7 @@ int main() {
         default:
             std::cout << "Num of left slaves incorrect!";
     }
+    std::cout << std::endl << "Num of barrel: " << barrels[num_barrel];
     return 0;
 }
+20179
